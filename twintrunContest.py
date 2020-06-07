@@ -42,7 +42,7 @@ class TwintSearch(object):
         conf_obj.Search = '@Nuls'
 
         # conf_obj.Limit = 4
-        conf_obj.Since = '2020-05-27'
+        conf_obj.Since = '2020-05-27 00:00:01'
 
         conf_obj.Replies = True
         twint.run.Search(conf_obj)
@@ -66,23 +66,26 @@ class TwintSearch(object):
         conf_obj.Debug = True
         conf_obj.Replies = True
         conf_obj.Store_csv = False
-
+        Year = None
+        Since = None
+        Until = None
         # conf_obj.Count = 5
-        conf_obj.Since = '2020-05-27'
+        conf_obj.Since = '2020-05-21'
+        conf_obj.Until = '2020-05-28'
         twint.run.Search(conf_obj)
         print()
         ptweets = twint.output.tweets_list
-        with open('ptweetsReplies529.csv', 'w') as output:
-            output.write('id, date, username, name, tweet\n')
-
+        with open('ptweetsReplies521thru28one.txt', 'w') as output:
+            # output.write('id, date, time, username, name, tweet\n')
             for u in ptweets:
                 # mlist = [item.username, item.name, item.id, item.datestamp, item.tweet]
                 # output.write(item.username, item.name, item.id, item.datestamp, item.tweet)
                 try:
-                    output.write('{}, {}, {}, {}, {}\n'.format(u.id_str, u.datestamp, u.username, u.name, u.tweet))
+                    output.write('|| {} || {} || {} || {} || {} || {} ^^'.format(u.id_str, u.datestamp, u.timestamp, u.username, u.name, u.tweet))
+                    #output.write('){} ){}\n'.format(u.id_str, u.tweet))
                 except UnicodeEncodeError:
-                    print("UnicodeEncodeError")
-                    print(u.id_str)
+                    print("Err: ")
+                    print(')' + u.id_str + ' )' + u.tweet)
                     pass
 
 
@@ -92,8 +95,8 @@ if __name__ == "__main__":
 
 
 
-
-
+# best for csv: use this = remove linefeeds  \r\n  -- ck 1st for ||  use () instead if necessary
+#                     output.write('|| {} || {} || {} || {} || {} || {} ^^'.format(u.id_str, u.datestamp, u.timestamp, u.username, u.name, u.tweet))
 #To celebrate the #@Bitcoin # halving event, we're giving away
 
 # to tweet
