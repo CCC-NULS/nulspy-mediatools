@@ -163,7 +163,7 @@ async def Username(_id):
     r = await Request(url, headers={"X-Requested-With": "XMLHttpRequest"})
     soup = BeautifulSoup(r, "html.parser")
 
-    return soup.find("a", "fn url alternate-context")["href"].replace("/", "")
+    # return soup.find("a", "fn url alternate-context")["href"].replace("/", "") nms
 
 async def Tweet(url, config, conn):
     logme.debug(__name__+':Tweet')

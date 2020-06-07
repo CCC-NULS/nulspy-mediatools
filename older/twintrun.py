@@ -6,15 +6,15 @@ class TwintSearch(object):
     def __init__(self):
 
         twintconf = twint.Config()
-        # twintconf.Username = "Nuls"
-        twintconf.User_id = "nmschorr"
+        twintconf.Username = "Nuls"
+        #twintconf.User_id = "nmschorr"
         # twintconf.Username = "Nancy Schorr"
 
         twintconf.Store_csv = True
         twintconf.Store_object = True
         # twintconf.User_full = True
-        # twintconf.Year = '2020'
-        # twintconf.Since = '2020-04-11'
+        twintconf.Year = '2020'
+        twintconf.Since = '2020-05-27'
         # twintconf.Limit = 4
         # my retweet: https://twitter.com/nerve_network/status/1255608482608353281
         self.twintconf = twintconf
@@ -36,11 +36,15 @@ class TwintSearch(object):
 
     def get_retweets(self):
         conf_obj = self.twintconf
-        conf_obj.Search = '@nerve_network'
+        # conf_obj.Search = '@nerve_network'
+        conf_obj.Search = '@Nuls'
         # conf_obj.Limit = 4
-        conf_obj.Since = '2020-04-24'
+        # conf_obj.Since = '2020-04-24'  nms
+        conf_obj.Since = '2020-05-27'
 
-        conf_obj.Retweets = True
+        conf_obj.Replies = True
+        # conf_obj.Retweets = True
+
         twint.run.Search(conf_obj)
         target_tweets = twint.output.users_list
         ktweets = []
@@ -48,13 +52,17 @@ class TwintSearch(object):
         for tk in target_tweets:
             ktweets.append(tk)
 
-        with open('ktweets.csv', 'w') as output:
-            output.write('id, username\n')
+        with open('may28contestreplies3.txt', 'w') as output:
+            output.write('id, username\n, ')
             for u in ktweets:
                 output.write(u)
 
 
 #To celebrate the #@Bitcoin # halving event, we're giving away
+
+# replies to : 1266354703782289410
+# ap.add_argument("--replies", help="Display replies to a subject.", action="store_true")
+# t.user_id = int(tw["data-user-id"])
 
 
 if __name__ == "__main__":
