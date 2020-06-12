@@ -8,9 +8,9 @@ class TwintSearch(object):
         twintconf = twint.Config()
         twintconf.Store_csv = False
         twintconf.Store_object = True
-        # twintconf.User_id = "nmschorr"
-
         twintconf.User_id = "Nuls"
+
+        # twintconf.User_id = "nmschorr"
         # twintconf.Username = "Nuls"
         # twintconf.Username = "Nancy Schorr"
         # twintconf.User_full = True
@@ -58,24 +58,35 @@ class TwintSearch(object):
                 output.write(u)
 
     def get_pasttweets(self):   # edit this as necessary
+        nulsid = "912987663052836864"
+        nulsuname = "nuls"
+        nrvid = "912987663052836864"
+        nrvname = "nerve_network"  # ???
+
         conf_obj = self.twintconf
-        conf_obj.Search = '@Nuls'
-        conf_obj.Custom["user_id"] = "912987663052836864"
-        conf_obj.Custom["username"] = "Nuls"
+        # conf_obj.Search = '@Nuls'
+        conf_obj.Search = 'NULS has been integrated into '
+
+        # conf_obj.Custom["user_id"] = nulsid
+        # conf_obj.Custom["username"] = nulsuname
         conf_obj.Store_object_tweets_list = True
-        conf_obj.Debug = True
-        conf_obj.Replies = True
+        # conf_obj.Debug = True
+        # conf_obj.Replies = True
+        # conf_obj.Retweets = True
+        conf_obj.TwitterSearch = True
+
         conf_obj.Store_csv = False
-        Year = None
-        Since = None
-        Until = None
-        # conf_obj.Count = 5
-        conf_obj.Since = '2020-05-21'
-        conf_obj.Until = '2020-05-28'
+        conf_obj.Since = '2020-05-31'
+        # conf_obj.Until = '2020-06-12'
+        # conf_obj.Following = True
         twint.run.Search(conf_obj)
         print()
+        # Tweet.conversation_id
+        #Tweet.retweet_id
+        #t.reply_to = [{'user_id': t['id_str'], 'username': t['screen_name']} for t in json.loads(tw["data-reply-to-users-json"])]
+
         ptweets = twint.output.tweets_list
-        with open('ptweetsReplies521thru28one.txt', 'w') as output:
+        with open('newnulsJun11.txt', 'w') as output:
             # output.write('id, date, time, username, name, tweet\n')
             for u in ptweets:
                 # mlist = [item.username, item.name, item.id, item.datestamp, item.tweet]
@@ -85,7 +96,7 @@ class TwintSearch(object):
                     #output.write('){} ){}\n'.format(u.id_str, u.tweet))
                 except UnicodeEncodeError:
                     print("Err: ")
-                    print(')' + u.id_str + ' )' + u.tweet)
+                    print('||' + u.id_str + ' || ' + u.tweet)
                     pass
 
 
@@ -93,6 +104,9 @@ if __name__ == "__main__":
     tw_obj = TwintSearch()
     tw_obj.get_pasttweets()
 
+
+# https://twitter.com/Nuls/status/1271030681896919042   june11 cryptocheckout
+# https://twitter.com/Nuls/status/1271115644184989697   june11 questcapital partner
 
 
 # best for csv: use this = remove linefeeds  \r\n  -- ck 1st for ||  use () instead if necessary
