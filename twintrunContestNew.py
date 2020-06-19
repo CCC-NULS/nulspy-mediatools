@@ -21,36 +21,30 @@ class TwintSearch(object):
         return re_emoji.sub(r'', text)
 
     def get_retweets(self):  # 1272636436920111104
-
-
         c = twint.Config()
-        c.Store_csv = True
-        c.Store_object = True
-        c.Since = '2020-06-14 00:00:01'
+        c.Since = '2020-06-16 00:00:01'
+        c.Until = '2020-06-18 00:00:01'
         c.Limit = 2999
-        c.Username = "noneprivacy"
-        #c.Search = 'giving away a share of 500'
-        # c.Search = '@nuls'
-        c.hashtags = '#NULS'
-        # conf_obj.Custom["tweet"] = ["id"]
-        # c.Custom["user"] = ["bio"]
-        # c.Output = "none"
-        # conf_obj.Search = '@nerve_network'
-        # conf_obj.Search = '@Nuls'
+        # c.Username = "Nuls"
+        c.All = True
+        # c.hashtags = '#NULS'
+        # c.Search = 'RT @Nuls:'
+        # c.Popular_tweets = True
+        # c.Native_retweets = True
+        # c.Followers = True
+        c.Custom_query = "RT @Nuls"
+        # c.Custom = {'tweet': None, 'user': "None", 'username': 'Nuls'}
+        # c.Lang = 'English'
+        # c.Skip_certs = True
 
-        # conf_obj.Limit = 4
-        # conf_obj.Retweets = True
-
-        # conf_obj.Replies = True
         twint.run.Search(c)
+
         target_tweets = twint.output.users_list
 
-        # target_tweets = twint.output
-        tweet_list = []
-        #
-        # for tk in target_tweets:
+        for tk in target_tweets:
+            print(tk)
         #     tweet_list.append(tk)
-        #
+
 
         ptweets = twint.output.tweets_list
         with open(self.fname, 'w+') as output:
@@ -60,10 +54,9 @@ class TwintSearch(object):
                 # output.write(item.username, item.name, item.id, item.datestamp, item.tweet)
                 try:
                     output.write('|| {} || {} || {} || {} || {} || {} ^^'.format(u.id_str, u.datestamp, u.timestamp, u.username, u.name, u.tweet))
-                    #output.write('){} ){}\n'.format(u.id_str, u.tweet))
                 except UnicodeEncodeError:
-                    print("Err: ")
-                    print('||' + u.id_str + ' || ' + u.tweet)
+                    u = self.strip_emoji(u)
+                    output.write('|| {} || {} || {} || {} || {} || {} ^^'.format(u.id_str, u.datestamp, u.timestamp, u.username, u.name, u.tweet))
                     pass
 
 
@@ -74,6 +67,12 @@ if __name__ == "__main__":
 
 # https://twitter.com/Nuls/status/1271030681896919042   june11 cryptocheckout
 # https://twitter.com/Nuls/status/1271115644184989697   june11 questcapital partner
+
+
+
+#    twint -s "Nuls" --since 2020-06-14 --hashtag "NULS"
+
+
 
 
 # best for csv: use this = remove linefeeds  \r\n  -- ck 1st for ||  use () instead if necessary

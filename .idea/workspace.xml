@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1885f381-8910-480a-8162-9d7e5ad8a5a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twintFollowers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twintrunContestNew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/twint_NULS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/twint_NULS.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twintrunContest.bk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/twintrunContest.py" beforeDir="false" afterPath="$PROJECT_DIR$/twintrunContest.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,53 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/twintrunContest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twint-last-request.log">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twint/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="34" column="19" selection-start-line="34" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twint/format.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/elasticsearch/index-tweets.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twint/tweet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="107" column="33" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -78,10 +34,19 @@
       <find>retweet</find>
       <find>repl</find>
       <find>reply</find>
+      <find>hashtag</find>
+      <find>hash</find>
+      <find>privacy</find>
+      <find>twint</find>
+      <find>followers</find>
+      <find>64</find>
+      <find>user</find>
+      <find>timeline</find>
     </findStrings>
     <dirStrings>
       <dir>E:\PycharmProjects\twint_NULS\twint</dir>
       <dir>E:\PycharmProjects\twint_NULS</dir>
+      <dir>E:\PycharmProjects\NULS\twint_NULS</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -95,7 +60,9 @@
         <option value="$PROJECT_DIR$/twintrun.py" />
         <option value="$PROJECT_DIR$/twintrun-daily.py" />
         <option value="$PROJECT_DIR$/twint/get.py" />
+        <option value="$PROJECT_DIR$/twintFollowers.py" />
         <option value="$PROJECT_DIR$/twintrunContest.py" />
+        <option value="$PROJECT_DIR$/twintrunContestNew.py" />
       </list>
     </option>
   </component>
@@ -105,12 +72,13 @@
         <option value="$PROJECT_DIR$/.idea/twint_NULS.iml" />
         <option value="$PROJECT_DIR$/.idea/vcs.xml" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="17" />
-    <option name="y" value="134" />
+    <option name="x" value="171" />
+    <option name="y" value="121" />
     <option name="width" value="1448" />
     <option name="height" value="1024" />
   </component>
@@ -119,7 +87,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,27 +97,7 @@
             <path>
               <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
               <item name="twint_NULS" type="462c0819:PsiDirectoryNode" />
-              <item name="elasticsearch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twint_NULS" type="462c0819:PsiDirectoryNode" />
-              <item name="New folder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twint_NULS" type="462c0819:PsiDirectoryNode" />
-              <item name="newans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twint_NULS" type="462c0819:PsiDirectoryNode" />
               <item name="older" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twint_NULS" type="462c0819:PsiDirectoryNode" />
-              <item name="PERFECT-USED" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twint_NULS" type="b2602c69:ProjectViewProjectNode" />
@@ -161,12 +108,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -176,11 +124,13 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\twint_NULS\older" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\NULS\twint_NULS" />
       <recent name="E:\PycharmProjects\twint_NULS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\NULS\twint_NULS\New folder" />
+      <recent name="E:\PycharmProjects\twint_NULS\older" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -195,7 +145,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.twintrunContest">
+  <component name="RunManager" selected="Python.twintrunContestNew">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -209,6 +159,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="twintFollowers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="twint_NULS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/twintFollowers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -259,6 +230,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="twintrunContestNew" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="twint_NULS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/twintrunContestNew.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="twintrunnewer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="twint_NULS" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -282,6 +274,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.twintrunContestNew" />
+        <item itemvalue="Python.twintFollowers" />
         <item itemvalue="Python.twintrunContest" />
         <item itemvalue="Python.twintrunnewer" />
         <item itemvalue="Python.twintrun" />
@@ -303,22 +297,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="1186" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5294118" visible="true" weight="0.24651457" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5294118" visible="true" weight="0.29847908" />
       <window_info id="Structure" order="1" sideWeight="0.47058824" side_tool="true" weight="0.2664452" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.39482564" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5246599" weight="0.5804878" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8188776" weight="0.18439025" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5246599" weight="0.30341464" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8188776" weight="0.3512195" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32834226" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.47534013" side_tool="true" weight="0.041551247" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.11219512" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.18731707" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.4996624" weight="0.31902438" />
       <window_info anchor="bottom" id="Inspection Results" order="12" sideWeight="0.50510204" weight="0.3296371" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -331,41 +324,48 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/twintrunContest.py</url>
-          <line>93</line>
+          <line>60</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/twintrunContest.py</url>
-          <line>94</line>
+          <line>61</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/twintrunContest.py</url>
-          <line>90</line>
+          <line>57</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/twintrunContest.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/twintrunContest.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/twintrunContest.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/twintrunContest.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/twintrunContestNew.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="45" column="15" selection-start-line="45" selection-end-line="46" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/elasticsearch/visualizations.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -373,73 +373,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/older/twintrun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="44" column="31" lean-forward="true" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/older/twintrunnewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/verbose.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2439">
-          <caret line="227" column="25" selection-start-line="227" selection-end-line="228" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/output.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="186" column="22" selection-start-line="186" selection-start-column="18" selection-end-line="186" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/get.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="165" column="84" selection-start-line="165" selection-start-column="84" selection-end-line="165" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/twint-request_urls.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/automate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/user.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twint/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1449">
-          <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/older/twinttwittersearch.txt">
@@ -462,30 +396,239 @@
     <entry file="file://$PROJECT_DIR$/elasticsearch/index-tweets.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="45" column="15" selection-start-line="45" selection-end-line="46" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/_bootlocale.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-913">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/twint/format.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/older/twintrunnewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/storage/panda.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="185" column="60" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PERFECT-USED/reweetMAY21thru28NEW.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1197" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PERFECT-USED/ptweetsReplies528newtryAAA.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/newnulsJun11.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/newnulsJun11 (2).txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/ptweetsReplies528new.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/ptweetsReplies528short2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/twint-last-request.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Newfolder/twint-request_urls.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newans/nulsaftermay27b.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twintFollowers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nulsRT-20200618180726.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Followers-%Y%m%d%H%M%S.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out3.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/older/twintrun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/older/twintrunContest.bk">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/older/twintrunContest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="66" column="25" selection-start-line="66" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/get.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-609">
+          <caret line="144" column="44" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/verbose.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/feed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2086">
+          <caret line="170" column="46" lean-forward="true" selection-start-line="170" selection-end-line="171" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2877">
+          <caret line="293" column="74" selection-start-line="293" selection-start-column="70" selection-end-line="293" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/output.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="186" column="22" selection-start-line="186" selection-start-column="18" selection-end-line="186" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1526" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twint/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/twint/tweet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="107" column="33" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="33" />
+        <state relative-caret-position="231">
+          <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twint/config.py">
+    <entry file="file://$PROJECT_DIR$/twintrunContest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="34" column="19" selection-start-line="34" selection-end-line="35" />
+        <state relative-caret-position="105">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twintrunContest.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+        <state relative-caret-position="326">
+          <caret line="1751" selection-start-line="1751" selection-end-line="1751" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twintrunContestNew.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

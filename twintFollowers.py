@@ -20,60 +20,54 @@ class TwintSearch(object):
         re_emoji = re.compile(u'([\U000D000A])|([\U0000000D])|([\U0000000A])|([\U00002600-\U000027BF])|([\U0001f300-\U0001f64F])|([\U0001f680-\U0001f6FF])')
         return re_emoji.sub(r'', text)
 
-    def get_retweets(self):  # 1272636436920111104
-
-
+    def get_followers(self):
         c = twint.Config()
         c.Store_csv = True
-        c.Store_object = True
-        c.Since = '2020-06-14 00:00:01'
-        c.Limit = 2999
+        # c.Store_object = True
+        # c.Since = '2020-06-14 00:00:01'
+        c.Limit = 29999
         c.Username = "noneprivacy"
-        #c.Search = 'giving away a share of 500'
-        # c.Search = '@nuls'
-        c.hashtags = '#NULS'
         # conf_obj.Custom["tweet"] = ["id"]
-        # c.Custom["user"] = ["bio"]
-        # c.Output = "none"
-        # conf_obj.Search = '@nerve_network'
-        # conf_obj.Search = '@Nuls'
+        c.Custom["user"] = ["Nuls"]
+        c.Custom["user_id"] = [ 912987663052836864 ]
 
         # conf_obj.Limit = 4
         # conf_obj.Retweets = True
 
         # conf_obj.Replies = True
-        twint.run.Search(c)
-        target_tweets = twint.output.users_list
+        twint.run.Followers(c)
+        followers = twint.output.users_list
 
-        # target_tweets = twint.output
-        tweet_list = []
-        #
-        # for tk in target_tweets:
-        #     tweet_list.append(tk)
-        #
+        k_followers = []
 
-        ptweets = twint.output.tweets_list
-        with open(self.fname, 'w+') as output:
-            output.write('id, date, time, username, name, tweet\n')
-            for u in ptweets:
-                # mlist = [item.username, item.name, item.id, item.datestamp, item.tweet]
-                # output.write(item.username, item.name, item.id, item.datestamp, item.tweet)
+        for user in followers:
+            k_followers.append(user)
+            print(user)
+
+        with open(f'Followers-{self.fmt_nodash}.csv', 'w+') as output:
+            output.write('id, username, followers, following\n')
+            for u in k_followers:
                 try:
-                    output.write('|| {} || {} || {} || {} || {} || {} ^^'.format(u.id_str, u.datestamp, u.timestamp, u.username, u.name, u.tweet))
-                    #output.write('){} ){}\n'.format(u.id_str, u.tweet))
+                    output.write('{},{},{},{}\n'.format(u.id, u.username, u.followers, u.following))
                 except UnicodeEncodeError:
-                    print("Err: ")
-                    print('||' + u.id_str + ' || ' + u.tweet)
+                    u = self.strip_emoji(u)
+                    output.write('{},{},{},{}\n'.format(u.id, u.username, u.followers, u.following))
                     pass
 
 
 if __name__ == "__main__":
     tw_obj = TwintSearch()
-    tw_obj.get_retweets()
+    tw_obj.get_followers()
 
 
 # https://twitter.com/Nuls/status/1271030681896919042   june11 cryptocheckout
 # https://twitter.com/Nuls/status/1271115644184989697   june11 questcapital partner
+
+# nulsid: 912987663052836864
+
+#    twint -s "Nuls" --since 2020-06-14 --hashtag "NULS"
+
+
 
 
 # best for csv: use this = remove linefeeds  \r\n  -- ck 1st for ||  use () instead if necessary

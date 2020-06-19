@@ -1,60 +1,81 @@
 import twint
-import re
-import datetime
+
 
 class TwintSearch(object):
 
     def __init__(self):
-        self.fmt_nodash = '%Y%m%d%H%M%S'
-        fmt_dash = '%F%H%M%S'
-        self.dl = ' || '
-        self.tweet_date_type = '%a %b %d %H:%M:%S +0000 %Y'  # incoming date - don't alter this line!
-        dt = datetime.datetime.now()
-        self.todays = dt.strftime(self.fmt_nodash)
-        self.todays_dash = dt.strftime(fmt_dash)
-        self.column_header = "\n - tweetid   ||    created_at        ||   screen_name   ||     tweet   \n"
-        self.fname = f'nulsRT-{self.todays}.txt'
 
+        twintconf = twint.Config()
+        twintconf.Store_csv = False
+        twintconf.Store_object = True
+        # twintconf.User_id = "nmschorr"
 
-    def strip_emoji(self, text):
-        re_emoji = re.compile(u'([\U000D000A])|([\U0000000D])|([\U0000000A])|([\U00002600-\U000027BF])|([\U0001f300-\U0001f64F])|([\U0001f680-\U0001f6FF])')
-        return re_emoji.sub(r'', text)
+        twintconf.User_id = "Nuls"
+        # twintconf.Username = "Nuls"
+        # twintconf.Username = "Nancy Schorr"
+        # twintconf.User_full = True
+        # twintconf.Year = '2020'
+        # twintconf.Since = '2020-04-11'
+        # twintconf.Limit = 4
+        # my retweet: https://twitter.com/nerve_network/status/1255608482608353281
 
-    def get_retweets(self):  # 1272636436920111104
+        self.twintconf = twintconf
 
+    def get_followers(self):
+        conf_ob = self.twintconf
 
-        c = twint.Config()
-        c.Store_csv = True
-        c.Store_object = True
-        c.Since = '2020-06-14 00:00:01'
-        c.Limit = 2999
-        c.Username = "noneprivacy"
-        #c.Search = 'giving away a share of 500'
-        # c.Search = '@nuls'
-        c.hashtags = '#NULS'
-        # conf_obj.Custom["tweet"] = ["id"]
-        # c.Custom["user"] = ["bio"]
-        # c.Output = "none"
+        twint.run.Followers(conf_ob)
+        target_followers = twint.output.users_list
+        k_followers = []
+
+        for user in target_followers:
+            k_followers.append(user)
+
+        with open('kfollowers.csv', 'w') as output:
+            output.write('id, username, followers, following\n')
+            for u in k_followers:
+                output.write('{},{},{},{}\n'.format(u.id, u.username, u.followers, u.following))
+
+    def get_retweets(self):
+        conf_obj = self.twintconf
         # conf_obj.Search = '@nerve_network'
-        # conf_obj.Search = '@Nuls'
+        conf_obj.Search = '@Nuls'
 
         # conf_obj.Limit = 4
-        # conf_obj.Retweets = True
+        conf_obj.Since = '2020-05-27 00:00:01'
 
-        # conf_obj.Replies = True
-        twint.run.Search(c)
+        conf_obj.Replies = True
+        twint.run.Search(conf_obj)
         target_tweets = twint.output.users_list
+        ktweets = []
 
-        # target_tweets = twint.output
-        tweet_list = []
-        #
-        # for tk in target_tweets:
-        #     tweet_list.append(tk)
-        #
+        for tk in target_tweets:
+            ktweets.append(tk)
 
+        with open('ktweets.csv', 'w') as output:
+            output.write('id, username\n')
+            for u in target_tweets:
+                output.write(u)
+
+    def get_pasttweets(self):   # edit this as necessary
+        conf_obj = self.twintconf
+        # conf_obj.Search = '@Nuls'
+        conf_obj.Search = '@nerve_network'
+        conf_obj.Custom["user_id"] = "912987663052836864"
+        conf_obj.Custom["username"] = "nuls"
+        conf_obj.Store_object_tweets_list = True
+        conf_obj.Debug = True
+        conf_obj.Replies = True
+        conf_obj.Retweets = True
+
+        conf_obj.Store_csv = False
+        conf_obj.Since = '2020-05-21'
+        conf_obj.Until = '2020-06-07'
+        twint.run.Search(conf_obj)
+        print()
         ptweets = twint.output.tweets_list
-        with open(self.fname, 'w+') as output:
-            output.write('id, date, time, username, name, tweet\n')
+        with open('nerveMayandJune2.txt', 'w') as output:
+            # output.write('id, date, time, username, name, tweet\n')
             for u in ptweets:
                 # mlist = [item.username, item.name, item.id, item.datestamp, item.tweet]
                 # output.write(item.username, item.name, item.id, item.datestamp, item.tweet)
@@ -69,11 +90,8 @@ class TwintSearch(object):
 
 if __name__ == "__main__":
     tw_obj = TwintSearch()
-    tw_obj.get_retweets()
+    tw_obj.get_pasttweets()
 
-
-# https://twitter.com/Nuls/status/1271030681896919042   june11 cryptocheckout
-# https://twitter.com/Nuls/status/1271115644184989697   june11 questcapital partner
 
 
 # best for csv: use this = remove linefeeds  \r\n  -- ck 1st for ||  use () instead if necessary
