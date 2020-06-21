@@ -4,7 +4,7 @@ from __future__ import print_function
 import sys
 
 sys.path.append(r'/home/Nancy/twitter/mks')
-sys.path.append(r'/home/Nancy/twitter/nulspy-twitter/python-twitter')
+sys.path.append(r'/home/Nancy/twitter/nulspy-mediatools/nulspy-twitter/python-twitter')
 import twitter
 from mks import Mks  # nms private key for twitter info - not in project directory
 
