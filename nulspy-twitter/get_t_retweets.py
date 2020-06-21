@@ -96,13 +96,18 @@ class RetweetsClass:
 
 
 if __name__ == '__main__':
+    # june16 contest:  1272985780965838848
 
-    #tweet_list = ["1272636436920111104"]   # mid june tweets we want retweets of
+    #tweet_list = ["1272636436920111104"]   - contest done
+    #tweet_list = ["1272636436920111104"]   - contest done
+    # mid june tweets we want retweets of
     # tweetid = "1272636436920111104"
     #tweet_list = ["1271790310885076992", "1271030681896919042", "1271115644184989697"]  # early june tweets we want retweets of
     #tweet_list = ["1272636436920111104", "1272644085405421568", "1272985780965838848", "1272985779321688066", "1271030681896919042"]   # mid june tweets we want retweets of
 
-    tweet_list = ["1272636436920111104", "1272644085405421568", "1272985780965838848", "1272985779321688066", "1271030681896919042"]   # mid june tweets we want retweets of
+    #tweet_list = ["1272636436920111104", "1272644085405421568", "1272985780965838848", "1272985779321688066", "1271030681896919042"]   # mid june tweets we want retweets of
+    # tweet_list = ["1271790310885076992"]  - contest poll - done
+    tweet_list = ["1272985780965838848"]
 
     tweet_obj = RetweetsClass()  # make the class object
     for tweetid in tweet_list:
