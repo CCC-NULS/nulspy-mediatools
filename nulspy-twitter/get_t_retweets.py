@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
     #tweet_list = ["1272636436920111104", "1272644085405421568", "1272985780965838848", "1272985779321688066", "1271030681896919042"]   # mid june tweets we want retweets of
     # tweet_list = ["1271790310885076992"]  - contest poll - done
-    tweet_list = ["1272985780965838848"]
+    tweet_list = ["1272985780965838848", "1272985779321688066"]
 
     tweet_obj = RetweetsClass()  # make the class object
     for tweetid in tweet_list:

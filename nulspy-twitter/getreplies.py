@@ -92,9 +92,9 @@ class RepliesObject:
         name1 = "nerve_network"
 
         if whoit == 0:  # 0 = Nuls
-            tweets = mycreds.GetSearch(term=name0, lang="en", count=100)
+            tweets = mycreds.GetSearch(term=name0, lang="en", count=200, include_entities="true")
         elif whoit == 1:  # 1 = Nerve
-            tweets = mycreds.GetSearch(term=name1, lang="en", count=100)
+            tweets = mycreds.GetSearch(term=name1, lang="en", count=200, include_entities="true")
 
         print("tweets returned: " + str(len(tweets)))
         return tweets
