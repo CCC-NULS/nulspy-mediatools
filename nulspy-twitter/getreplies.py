@@ -52,9 +52,18 @@ class RepliesObject:
         self.nervefnametxt = f'/home/Nancy/tweetdb/results/NERVE/{txdir}'
         self.nervefnamejs = f'/home/Nancy/tweetdb/results/NERVE/{jsdir}'
 
-    def strip_emoji(self, tline):
+    def strip_emoji3(self, tline):
         re_emoji = re.compile(u'([\U000D000A])|([\U0000000D])|([\U0000000A])|([\U00002600-\U000027BF])|([\U0001f300-\U0001f64F])|([\U0001f680-\U0001f6FF])')
         return re_emoji.sub(r' ', tline)
+
+    def strip_emoji(self, tline0):
+        re_one = re.compile(u'([\u000A]) | ([\u000D]) | ([\u000B]) | ([\u000C]) | ([\u0085]) | ([\u2028]) | ([\u2029])')
+        # re_two = re.compile(u'([\u2600-\u027BF]) | ([\u0001f680-\u0001f6FF])')
+        re_two = re.compile(u'([\u02FF-\u10FFFD])')
+
+        tline1 = re_one.sub(u'', tline0)
+        tline2 = re_two.sub(u'', tline1)
+        return tline2
 
     def tweets_to_csv(self, tweets, whoit=0):
         s = self
