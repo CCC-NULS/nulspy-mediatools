@@ -33,3 +33,6 @@ js
 serve.json
 ./index.html
 ./favicon.ico
+package-lock.json
+index.html
+favicon.ico
