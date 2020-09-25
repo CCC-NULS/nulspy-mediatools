@@ -1,7 +1,6 @@
 
 var chainid = 4810
 var PW = 'kathy123'
-// var contaddy = 'SPEXdKRT4yJrChYu5KfusRJrLMpJ8qRmitSHxe'
 // SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC   new contract august 10
 var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
 var SENDER = 'SPEXdKRT4pz7ZhasM9pTK4fvGrJf8eod5ZqtXa'
@@ -14,9 +13,6 @@ var GAS_LIMIT = 10000000
 
 var Url3 = 'http://westteam.nulstar.com:8003'
 var Url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
-
-// var Url3 = 'http://westteam.nulstar.com:18003'
-// var Url4 = 'http://westteam.nulstar.com:18004/jsonrpc'
 
 const cobj = {
   chainid,

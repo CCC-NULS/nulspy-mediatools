@@ -5,16 +5,16 @@ import router from './router'
 
 import App from './App.vue'
 import 'material-icons'
-import colors from 'vuetify/lib/util/colors'
+// import colors from 'vuetify/lib/util/colors'
 
 Vue.config.productionTip = true
 
 new Vue({
   vuetify,
   store,
-  colors,
   router,
-  iconfont: 'mdi',
   render: h => h(App)
 }).$mount('#app')
 // nms: perfect
+// colors,
+// iconfont: 'mdi',

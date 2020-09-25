@@ -90,8 +90,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetter } from 'vuex'
-import store from '../store'
+// import store from '../store'
 
 export default {
   name: 'AppyBar',

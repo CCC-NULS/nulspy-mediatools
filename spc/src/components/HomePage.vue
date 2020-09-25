@@ -155,12 +155,10 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap'); */
 
   .leading-relaxed {
     line-height: 1.625;
   }
-
   .w-1 {
     width: 0.25rem;
   }

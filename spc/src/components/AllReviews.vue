@@ -452,23 +452,23 @@
 </template>
 
 <script>
-#import Vue from 'vue'
-import axios from 'axios'
-import cobj from '@/constants/constants.js'
-import { Hcont, ccodes } from '@/constants/constantsnew.js'
+// import Vue from 'vue'
+// import axios from 'axios'
+// import cobj from '@/constants/constants.js'
+// import { Hcont, ccodes } from '@/constants/constantsnew.js'
 import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
 const dJSON = require('dirty-json')
 const cjo = cobj.data.cobj
 
-function strMapToObj (strMap) {
-  const obj = Object.create(null)
-  for (const [k, v] of strMap) {
-    // We don’t escape the key '__proto__'
-    // which can cause problems on older engines
-    obj[k] = v
-  }
-  return obj
-}
+// function strMapToObj (strMap) {
+//   const obj = Object.create(null)
+//   for (const [k, v] of strMap) {
+//     // We don’t escape the key '__proto__'
+//     // which can cause problems on older engines
+//     obj[k] = v
+//   }
+//   return obj
+// }
 
 function objToStrMap (obj) {
   const strMap = new Map()
@@ -479,9 +479,9 @@ function objToStrMap (obj) {
   return strMap
 }
 
-function jsonToStrMap (jsonStr) {
-  return objToStrMap(JSON.parse(JSON.stringify(jsonStr)))
-}
+// function jsonToStrMap (jsonStr) {
+//   return objToStrMap(JSON.parse(JSON.stringify(jsonStr)))
+// }
 
 async function axiosGetRevs () {
   var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
@@ -492,7 +492,7 @@ async function axiosGetRevs () {
   const myresult = axr.data.result.result // step 1 stringify
   const stepone = dJSON.parse(myresult)
   this.reviewlist = stepone
-  const steptwo = JSON.stringify(stepone)
+  // const steptwo = JSON.stringify(stepone)
   this.cardkey += 1
 }
 
@@ -514,8 +514,9 @@ async function reloadProducts (wcat) {
     await this.msleep(2000).then(() => {
       this.axiosGetProds()
     })
-    if (this.productlist.indexOf(wcat) > -1) // found it
-    { break }
+    if (this.productlist.indexOf(wcat) > -1) {  // found it
+     break
+    }
   }
   // reset results form
   this.$refs.vselone.reset()
@@ -533,7 +534,7 @@ async function wreview () {
   console.log('wrev review being written: ' + wrev)
   const axr = await this.writeReview(wcat, wrev)
   if (typeof (axr.data.result) === 'undefined') {
-    badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
+    var badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
     alert(badanswerstr)
   } else {
     this.productlist = ['Please wait', 'Blockchain is updating']

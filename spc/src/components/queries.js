@@ -1,9 +1,9 @@
-
+/*eslint camelcase: [2, {properties: "never"}]*/
 import axios from 'axios'
 import Hcont from '../constants/constantsnew.js'
 import cobj from '@/constants/constants.js'
 require('../constants/constantsnew.js')
-var [accStr, restTyps, acctlMeths, acctlOrig, aJson] = Object.values(Hcont)
+var [accStr, restTyps, aJson] = Object.values(Hcont)
 // contracts:  ["SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC"],
 
 function makeaxio () {
