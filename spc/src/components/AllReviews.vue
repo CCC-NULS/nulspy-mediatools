@@ -6,15 +6,15 @@
       md="6"
       xs="12"
       class="d-flex flex-column"
-    >  
+    >
       <!-- * * * * * * * ENTIRE LEFT COLUMN card on left -->
       <v-card
         id="columncard-left"
         color="transparent"
         width="100%"
         height="auto"
-        min-width="200px"           
-        max-width="700px"            
+        min-width="200px"
+        max-width="700px"
         min-height="550px"
         max-height="1200px"
         elevation-24
@@ -22,7 +22,7 @@
         shaped
         filled
         class="d-flex flex-column align-center flex-shrink-1 pt-1 pb-3 mt-0"
-      > 
+      >
         <!-- * * * * * * *  card on left -->
         <v-card
           id="top-backcard"
@@ -31,28 +31,28 @@
           columncard-left
           width="100%"
           height="70px"
-          min-width="23px"            
-          max-width="900px"  
+          min-width="23px"
+          max-width="900px"
           min-height="90px"
-          max-height="907px"             
+          max-height="907px"
           class="d-flex flex-column mx-3 mt-1 mb-1"
-        > 
+        >
           <!-- JUST THE LABEL TITLE WORD CONTRACT: -->
 
           <v-card
             v-for="contract in contracts"
             id="contractviewer"
-            :key="contract"      
+            :key="contract"
             color="transparent"
             width="breakpoint.smAndDown ? 200px : 600px"
             flat
             height="140px"
             min-height="110px"
             max-height="290px"
-            max-width="600px"            
+            max-width="600px"
             min-width="100px"
             class="d-flex flex-inline-row flex-grow-1 pa-0 mt-0 mb-5 mx-0 ptsans"
-          >   
+          >
             <v-chip
               id="titleChiptopContract"
               color="transparent"
@@ -62,27 +62,27 @@
               large
               class="montyfont px-3 mx-2 mb-n1"
               style="font-size:16px;font-weight:700;"
-            >   
+            >
               <v-icon
                 :style="`margin-right:10px;`"
-              >                
+              >
                 mdi-nfc
               </v-icon>
               <span
                 style="margin-right:10px;"
               >
-                contract: 
+                contract:
               </span>
-              <span 
+              <span
                 :style="styleContract"
                 style="text-transform:none;"
                 class="ptsans"
               >
                 {{ contract }}
               </span>
-            </v-chip>  
-             
-            <!--  card CHIP with contract # very small - - - -   -->   
+            </v-chip>
+
+            <!--  card CHIP with contract # very small - - - -   -->
           </v-card> <!-- end contractchip -->
         </v-card>  <!-- form card start -->
         <v-card
@@ -96,7 +96,7 @@
           shaped
           :style="computedHeight"
           class="d-flex flex-column align-center px-0 pt-2 pb-2 mx-1 mt-3 mb-7"
-        >          
+        >
           <v-chip
             id="write-rev-Chip"
             color="transparent"
@@ -107,14 +107,14 @@
             medium
             class="montyfont textlow pl-2 py-6 mx-3 mt-1 mb-1 text-center"
             style="font-size:36px;font-weight:700;max-width:600px;"
-          >   
+          >
             <v-icon
               :style="`margin-right:22px;font-size:36px;line-height:50px;`"
             >
               mdi-rocket-launch
             </v-icon>
             write review
-          </v-chip>  
+          </v-chip>
 
           <v-card
             id="form-wrap"
@@ -122,22 +122,22 @@
             width="475px"
             height="430px"
             min-width="420px"
-            max-width="600px"            
+            max-width="600px"
             min-height="200px"
             max-height="400px"
             flat
             color="transparent"
             class="d-flex flex-column align-center justify-center flex-grow-1 flex-shrink-1 pa-1 ma-1"
           >
-            <v-form 
+            <v-form
               id="wform"
-              ref="wform" 
+              ref="wform"
               form-wrap
               background-color="white"
               width="470px"
               min-width="270px"
               max-width="650px"
-              min-height="300px"              
+              min-height="300px"
               max-height="900px"
               class="d-flex flex-column flex-grow-1 flex-shrink-1 justify-center align-center mt-5 mx-1 pa-2"
               @submit.prevent="submit"
@@ -150,14 +150,14 @@
                 min-width="200px"
                 max-width="220px"
                 min-height="50px"
-                max-height="200px"             
+                max-height="200px"
                 required
                 clearable
                 color="deep-purple"
                 label="Product Category"
                 class="pa-2 mb-0 mx-2"
                 :style="styleTextareaSz"
-              />                        
+              />
               <v-textarea
                 id="textfieldform1b"
                 v-model="vmrev"
@@ -198,7 +198,7 @@
                 </v-card-actions>
               </v-card>
             </v-form>
-          </v-card>  
+          </v-card>
         </v-card>  <!-- end formAREA --><!-- begin feedback -->
         <v-card
           id="feedbackcard"
@@ -212,9 +212,9 @@
           max-height="100px"
           flat
           class="d-flex flex-column flex-grow-1 align-center px-0 pt-0 mx-0 mt-3 mb-3"
-        >    
+        >
           <v-simple-table
-            id="feedbacktable"          
+            id="feedbacktable"
             feedbackcard
             color="teal lighten-2"
             width="auto"
@@ -225,7 +225,7 @@
             max-height="2050px"
             class="d-flex flex-column flex-grow-1 px-2 py-1"
           >
-            <span 
+            <span
               id="writeresspan"
               :key="writeresultkey"
               style="font-size:14px;"
@@ -243,7 +243,7 @@
       md="6"
       xs="12"
       class="d-flex flex-column"
-    >                           
+    >
       <!-- ****** column card  -->
       <v-card
         id="columncard-right"
@@ -257,7 +257,7 @@
         shaped
         filled
         class="d-flex flex-column flex-grow-1 align-center pt-2"
-      > 
+      >
         <!--   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
         <!-- ****** vsel RED groupcard  -->
         <v-card
@@ -270,10 +270,10 @@
           flat
           color="transparent"
           class="d-flex flex-column flex-grow-1 flex-shrink-1 align-center mt-1 px-3"
-        >                                
+        >
           <!-- * * * * * * vselbackgroundcard select BACKGROUND  -->
 
-          <v-card        
+          <v-card
             id="vselbackgroundcard2"
             :key="prodkey"
             groupcard
@@ -285,7 +285,7 @@
             max-height="330px"
             color="transparent"
             class="d-flex flex-column flex-grow-1 align-center flex-shrink-1 px-2 py-6 mx-1 my-6"
-          >        
+          >
             <!-- * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * *  -->
             <!-- * * * * * *  * * * * * * * PRODUCT CHOICE SELECT * * * * * * * * * * * * * * * * *  -->
             <v-chip
@@ -297,17 +297,17 @@
               large
               class="montyfont textlow px-3 mx-2 mb-n1 mt-n1"
               style="font-size:36px;font-weight:700;"
-            >   
+            >
               <v-icon
                 :style="`margin-right:12px;font-size:36px;`"
-              >                
+              >
                 mdi-layers-search
               </v-icon>
               <span
                 style="margin-right:24px;"
               >
                 read reviews <br>
-              </span> 
+              </span>
             </v-chip>
             <v-select
               id="vselone"
@@ -345,13 +345,13 @@
                   class="mb-5 montyfont textlow"
                   style="text-transform:lowercase;"
                   @click="axiosGetRevs"
-                >    
+                >
                   go
                 </v-btn>
               </v-card-actions>
-              <span 
+              <span
                 style="font-size:12px;margin-top:24px;"
-              >            
+              >
                 If your product isn't showing in the list, try the reload products button.
               </span>
               <v-card-actions>
@@ -364,13 +364,13 @@
                   class="d-flex mb-3 mt-2 align-self-right"
                   style="text-transform:lowercase;"
                   @click="reloadProducts"
-                >    
-                  <span 
+                >
+                  <span
                     style="font-size:12px;"
                   >
                     reload products
                   </span>
-                </v-btn> 
+                </v-btn>
               </v-card-actions>
             </v-card>  <!-- end vselbackgroundcard -->
           </v-card>  <!-- end vselbackgroundcard -->
@@ -393,13 +393,13 @@
           color="teal lighten-5"
           height="auto"
           width="92%"
-          min-width="170px"    
-          min-height="150px"            
+          min-width="170px"
+          min-height="150px"
           :max-width="`styleobject4`"
           max-height="3000px"
           shaped
           class="d-flex flex-column align-left flex-grow-1 flex-shrink-1 px-6 pt-3 pb-6 mx-6 mt-4 mb-10"
-        >    
+        >
           <v-card
             id="chipdivcenter"
             color="transparent"
@@ -419,7 +419,7 @@
               medium
               class="montyfont textlow textlow px-6 pt-3 pb-0 mx-3 mt-1 mb-0 text-center"
               style="font-size:30px;font-weight:700;max-width:200px;"
-            >   
+            >
               <v-icon
                 :style="`margin-right:12px;font-size:36px;`"
               >
@@ -432,8 +432,8 @@
           <v-simple-table
             v-for="review in reviewlist"
             id="reviewstable"
-            :key="review.id + Math.random().toString()"    
-            reviewssheet  
+            :key="review.id + Math.random().toString()"
+            reviewssheet
             dense
             height="auto"
             width="auto"
@@ -447,172 +447,172 @@
           </v-simple-table>
         </v-card>   <!-- end rightbtmsheet -->
       </v-card>  <!-- end   botdivgraphic -->
-    </v-col> 
+    </v-col>
   </v-row>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import axios from "axios";
-  import cobj from '@/constants/constants.js';
-  import { Hcont, ccodes} from '@/constants/constantsnew.js'
-  import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
-  const dJSON = require('dirty-json');
-  const cjo = cobj.data.cobj
+#import Vue from 'vue'
+import axios from 'axios'
+import cobj from '@/constants/constants.js'
+import { Hcont, ccodes } from '@/constants/constantsnew.js'
+import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
+const dJSON = require('dirty-json')
+const cjo = cobj.data.cobj
 
-  function strMapToObj(strMap) {
-    let obj = Object.create(null);
-    for (let [k,v] of strMap) {
-      // We don’t escape the key '__proto__'
-      // which can cause problems on older engines
-      obj[k] = v;
-    }
-    return obj;
+function strMapToObj (strMap) {
+  const obj = Object.create(null)
+  for (const [k, v] of strMap) {
+    // We don’t escape the key '__proto__'
+    // which can cause problems on older engines
+    obj[k] = v
   }
+  return obj
+}
 
-  function objToStrMap(obj) {
-    let strMap = new Map();
-    for (let k of Object.keys(obj)) {
-      console.log("converting...: " + k)
-      strMap.set(k, obj[k]);
-    }
-    return strMap;
+function objToStrMap (obj) {
+  const strMap = new Map()
+  for (const k of Object.keys(obj)) {
+    console.log('converting...: ' + k)
+    strMap.set(k, obj[k])
   }
+  return strMap
+}
 
-  function jsonToStrMap(jsonStr) {
-    return objToStrMap(JSON.parse(JSON.stringify(jsonStr)));
+function jsonToStrMap (jsonStr) {
+  return objToStrMap(JSON.parse(JSON.stringify(jsonStr)))
+}
+
+async function axiosGetRevs () {
+  var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
+  const cid = 4810
+  const u3 = 'http://westteam.nulstar.com:8003'
+  // console.log("line225 ")
+  const axr = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
+  const myresult = axr.data.result.result // step 1 stringify
+  const stepone = dJSON.parse(myresult)
+  this.reviewlist = stepone
+  const steptwo = JSON.stringify(stepone)
+  this.cardkey += 1
+}
+
+async function axiosGetProds () {
+  const c = cjo
+  console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.Url3)
+  const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.Url3)
+  const axrsorted = axr.slice().sort()
+  console.log('sorted: -- : ' + axrsorted)
+  this.productlist = []
+  this.productlist = Object.assign(axrsorted)
+  console.log('new this.productlist: ' + axrsorted)
+}
+
+async function reloadProducts (wcat) {
+  var i = 0
+  while (i < 100) {
+    i += 1
+    await this.msleep(2000).then(() => {
+      this.axiosGetProds()
+    })
+    if (this.productlist.indexOf(wcat) > -1) // found it
+    { break }
   }
+  // reset results form
+  this.$refs.vselone.reset()
+  this.showprodkey += 1
+}
 
-  async function axiosGetRevs () {
-    var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
-    const cid = 4810
-    const u3 = 'http://westteam.nulstar.com:8003'
-    // console.log("line225 ")
-    let axr = await axiosGetReviewsMain( cid, contaddy, this.prodchoice, u3)
-    const myresult =  axr.data.result.result // step 1 stringify
-    const stepone = dJSON.parse(myresult)
-    this.reviewlist = stepone
-    const steptwo = JSON.stringify(stepone)
-    this.cardkey += 1; 
-  }  
-
-  async function axiosGetProds () {
-    const c = cjo
-    console.log("thedata: " +  c.chainid + " " + c.contaddy + " " + c.Url3)
-    let axr = await this.axiosGetProducts( c.chainid, c.contaddy, c.Url3)
-    let axrsorted = axr.slice().sort()
-    console.log("sorted: -- : " +  axrsorted)
-    this.productlist = []
-    this.productlist = Object.assign(axrsorted)
-    console.log("new this.productlist: " + axrsorted)
+async function wreview () {
+  this.writeresult = ' '
+  this.writeresultkey += 1
+  const wcat = this.vmcat
+  const wrev = this.vmrev
+  this.$refs.wform.reset()
+  console.log('reset the form')
+  console.log('wcat category being written to: ' + wcat)
+  console.log('wrev review being written: ' + wrev)
+  const axr = await this.writeReview(wcat, wrev)
+  if (typeof (axr.data.result) === 'undefined') {
+    badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
+    alert(badanswerstr)
+  } else {
+    this.productlist = ['Please wait', 'Blockchain is updating']
+    this.showprodkey += 1
+    console.log('wreview received response axr: ' + axr)
+    const axrstring = JSON.stringify(axr)
+    console.log('wreview received response myaxr: ' + axrstring)
+    const partresult = JSON.stringify(axr.data.result)
+    const partb = JSON.stringify(axr.status)
+    const partc = JSON.stringify(axr.statusText)
+    this.writeresult = partresult + '\nStatus code: ' + partb + ' Status text: ' + partc
+    this.writeresultkey += 1
+    this.reloadProducts(wcat)
   }
+}
 
-  async function reloadProducts(wcat) {
-    var i = 0
-    while (i < 100) {
-      i += 1;
-      await this.msleep(2000).then(() => { 
-        this.axiosGetProds() }); 
-      if (this.productlist.indexOf(wcat) > -1)   // found it
-        break;
-    }
-    // reset results form
-    this.$refs.vselone.reset()
-    this.showprodkey += 1;
-  }
-  
-  async function wreview () {
-    this.writeresult = ' ';
-    this.writeresultkey += 1;
-    const wcat = this.vmcat
-    const wrev = this.vmrev
-    this.$refs.wform.reset()
-    console.log("reset the form")
-    console.log("wcat category being written to: " + wcat)
-    console.log("wrev review being written: " + wrev)
-    let axr = await this.writeReview( wcat, wrev)
-    if (typeof(axr.data.result) == 'undefined') {
-      badanswerstr = "Write Review Failed. Make sure both fields contain alpha-numeric values."
-      alert(badanswerstr)
-      }
-    else {
-      this.productlist = [ "Please wait", "Blockchain is updating" ]
-      this.showprodkey += 1;
-      console.log("wreview received response axr: " + axr)
-      let axrstring = JSON.stringify(axr)
-      console.log("wreview received response myaxr: " + axrstring)
-      let partresult = JSON.stringify(axr.data.result)
-      let partb = JSON.stringify(axr.status)
-      let partc = JSON.stringify(axr.statusText)
-      this.writeresult  = partresult + "\nStatus code: " + partb + " Status text: " + partc
-      this.writeresultkey += 1;
-      this.reloadProducts(wcat);
-      }
-  }
+function msleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
 
-  function msleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
+export default {
+  name: 'AllReviews',
+  data: () => ({
+    showprodkey: 0,
+    writeresultkey: 0,
+    prodkey: 0,
+    review: '',
+    writeresult: '',
+    vmcat: '',
+    vmrev: '',
+    productlist: [],
+    prodchoice: '',
+    reviewlist: '',
+    chainid: cjo.chainid,
+    contracts: ['SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC']
+  }),
 
-  export default {
-    name: "AllReviews",
-    data: () => ({
-      showprodkey: 0,
-      writeresultkey: 0,
-      prodkey: 0,      
-      review: '',
-      writeresult: '',
-      vmcat: '',
-      vmrev: '',
-      productlist: [],
-      prodchoice: '',
-      reviewlist: '',
-      chainid: cjo.chainid,
-      contracts:  ["SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC"], 
-      }),
-
-    computed: {
-      styleContract () {
-        return  (window.outerWidth < 960) ? { fontSize: '11px' } : {};
-      },
-      styleTextareaSz () {
-        return  (window.outerWidth < 960) ? { width: '224px' } : { width: '424px' };
-      },
-      computedHeight () {
-        return  (window.outerWidth < 960) ? { height: '624px' } : { height: '424px' };
-      },
-      styleObjMaxWidth () {
-        return  (window.outerWidth < 960) ? { "max-width": "290px"} : {"max-width": "424px"};
-      },
-      yesbig () {
-        return (window.outerWidth > 959) ? true : false;
-      },
+  computed: {
+    styleContract () {
+      return (window.outerWidth < 960) ? { fontSize: '11px' } : {}
     },
-    mounted () {
-      this.axiosGetProds()  // get the prod list
-      if (window.outerWidth < 960) {
-        this.$store.dispatch('gMobileAct', true)   
-        console.log("yes mobile") 
-        console.log(this.$vuetify.application.top) 
-      }
-    },    
-    methods: {
-      msleep,
-      axiosGetRevs,
-      axiosGetProducts,
-      axiosGetProds,
-      writeReview,
-      wreview,
-      reloadProducts,
+    styleTextareaSz () {
+      return (window.outerWidth < 960) ? { width: '224px' } : { width: '424px' }
     },
+    computedHeight () {
+      return (window.outerWidth < 960) ? { height: '624px' } : { height: '424px' }
+    },
+    styleObjMaxWidth () {
+      return (window.outerWidth < 960) ? { 'max-width': '290px' } : { 'max-width': '424px' }
+    },
+    yesbig () {
+      return (window.outerWidth > 959)
+    }
+  },
+  mounted () {
+    this.axiosGetProds() // get the prod list
+    if (window.outerWidth < 960) {
+      this.$store.dispatch('gMobileAct', true)
+      console.log('yes mobile')
+      console.log(this.$vuetify.application.top)
+    }
+  },
+  methods: {
+    msleep,
+    axiosGetRevs,
+    axiosGetProducts,
+    axiosGetProds,
+    writeReview,
+    wreview,
+    reloadProducts
   }
+}
 </script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap'); 
+  @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
 
   .v-data-table__wrapper {
     font-size: small;

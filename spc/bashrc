@@ -1,0 +1,11 @@
+# bashrc
+
+PATH=/home/Nancy/.cache/Cypress:/usr/node-v12.17.0-linux-x64/lib/node_modules/@vue/cli-service-global/node_modules/.bin:/usr/bin:/usr/local/bin:/bin:/usr/local/lib64:/sbin:/bin:/usr/sbin:/usr/bin
+
+sudo env PATH=$PATH
+sudo env PATH=$PATH npm run build
+sudo env PATH=/home/Nancy/.cache/Cypress:/usr/node-v12.17.0-linux-x64/lib/node_modules/@vue/cli-service-global/node_modules/.bin:/usr/bin:/usr/local/bin:/bin:/usr/local/lib64:/sbin:/bin:/usr/sbin:/usr/bin npm run build
+
+export CYPRESS_CACHE_FOLDER=/var/cypress/.cache/Cypress
+export CYPRESS_CACHE_FOLDER=/home/Nancy/.cache/Cypress
+

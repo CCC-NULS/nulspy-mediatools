@@ -1,0 +1,18 @@
+If cypress won't install, copy from other project.
+
+To add ssl to projects, edit the vue.config.js file.
+Install https and fs node packages.
+Adjust nginx.conf.
+
+For problems, try "npm install" in main dir.
+
+With SSL, you must build and run as root.
+
+add to PATH of sudo:   /usr/node-v12.17.0-linux-x64/lib/node_modules/@vue/cli-service-global/node_modules/.bin
+
+sudo env "PATH=$PATH" npm run build
+
+
+
+
+

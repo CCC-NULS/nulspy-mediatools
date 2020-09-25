@@ -1,7 +1,0 @@
-if cypress won't install, copy from other project.
-
-To add ssl to projects, edit the vue.config.js file.
-Install https and fs node packages.
-Adjust nginx.conf.
-
-

@@ -16,7 +16,7 @@ export default new Router({
           name: 'AllReviews',
           path: '/allreviews',
           component: () => import('../components/AllReviews')
-        },
+        }
       ]
     }
   ]

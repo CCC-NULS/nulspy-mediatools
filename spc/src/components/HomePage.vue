@@ -9,8 +9,8 @@
         md="12"
         xs="4"
         class="d-flex flex-column justify-center align-center"
-      > 
-        <div 
+      >
+        <div
           v-if="$store.state.gShowHomeBool"
           id="gethiderdiv"
           :key="$store.state.gHomeKeyCount"
@@ -20,7 +20,7 @@
             flat
             class="d-none d-md-flex flex-column justify-center align-center"
             width="95%"
-          >            
+          >
             <v-card
               id="groupcard"
               mainfcard
@@ -29,16 +29,16 @@
               width="640px"
               min-width="350px"
             >
-              <v-card 
+              <v-card
                 id="tinycardtop"
                 groupcard
                 width="320"
                 color="#4DC0B5"
-                class="d-flex text-h2 pa-2 white--text ma-5 justify-center align-center font-weight-black" 
+                class="d-flex text-h2 pa-2 white--text ma-5 justify-center align-center font-weight-black"
               >
-                Genuine     
+                Genuine
               </v-card>
-              <v-card 
+              <v-card
                 id="tinycardtop"
                 groupcard
                 flat
@@ -48,14 +48,14 @@
                 class="d-flex align-center text-h1 black--text justify-center"
                 style="font-weight:900;"
               >
-                Reviews     
+                Reviews
               </v-card>
-            </v-card>  
-            <br>       
-            <span 
+            </v-card>
+            <br>
+            <span
               class="deep-orange--text text--lighten-1 mt-n11 mb-n11 font-weight-black"
               style="z-index:99;font-size:5rem;"
-            >         
+            >
               in
             </span>
             <br>
@@ -66,13 +66,13 @@
               flat
               width="740px"
             >
-              <span           
+              <span
                 class="teal--text text--darken-1 pa-2 font-weight-black"
                 style="font-size: 4rem;"
               >
-                the 
+                the
               </span>
-              <v-card 
+              <v-card
                 id="tinycard"
                 color="black"
                 height="100px"
@@ -93,18 +93,18 @@
             color="transparent"
             width="100%"
           >
-            <span 
+            <span
               class="grey--text darken-5 text-md-h4 align-center justify-center"
-              style="line-height:1.25;font-align:center;text-align:center; font-justify:center;"  
-              :style="`styleObject5`"      
+              style="line-height:1.25;font-align:center;text-align:center; font-justify:center;"
+              :style="`styleObject5`"
             >
               Space Exploration provides users with genuine reviews validated by the blockchain
             </span>
-            <span 
+            <span
               style="text-align:center;font-weight:800;font-size:3rem;margin-bottom:22px;"
             >
               Try Space Exploration
-            </span> 
+            </span>
           </v-card>
           <v-card
             id="spacercard"
@@ -132,22 +132,22 @@
 </template>
 
 <script>
-  export default {
-    name: "HomePage",
-    data: () => ({
-      x: 0,
-    }),
-    computed: {
-      styleObject5 () {
-        return  (window.outerWidth < 960) ? { fontSize: '16px' } :  { fontSize: '34px' };
-      },
-    },
-    methods: {
-      showhomebool () {
-        return this.getgShowHomeBool;
-      },
-    },
+export default {
+  name: 'HomePage',
+  data: () => ({
+    x: 0
+  }),
+  computed: {
+    styleObject5 () {
+      return (window.outerWidth < 960) ? { fontSize: '16px' } : { fontSize: '34px' }
+    }
+  },
+  methods: {
+    showhomebool () {
+      return this.getgShowHomeBool
+    }
   }
+}
 </script>
 
 <style>
