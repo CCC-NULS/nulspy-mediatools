@@ -1,4 +1,6 @@
-/*eslint camelcase: [2, {properties: "never"}]*/
+// /eslint camelcase: [2, {properties: "never"}]/
+/*eslint camelcase: ["warn", {allow: ["value_asset", "gas_limit", "gas_price", "contract_methodname", "contract_desc" ]}]*/
+
 import axios from 'axios'
 import Hcont from '../constants/constantsnew.js'
 import cobj from '@/constants/constants.js'
@@ -45,8 +47,6 @@ export async function axiosGetReviewsMain (chainid, contaddy, productId, Url3) {
 }
 
 export async function axiosGetProducts (chainid, contaddy, u3) {
-  // console.log(Hcont)
-  // console.log(Hcont.Hcont)
   console.log('here now')
   const invMethod = 'invokeView'
   const REQtype = 'getAllProductIds'
@@ -109,7 +109,6 @@ async function axiosGetContracts () {
   console.log('this.reviews: ' + this.reviews)
   this.cardkey += 1
 }
-
 export async function writeReview (wprod, wreview) {
   const contract = cobj.data.cobj.contaddy
   const sender = cobj.data.cobj.SENDER
