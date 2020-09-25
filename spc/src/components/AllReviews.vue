@@ -454,7 +454,7 @@
 <script>
 // import Vue from 'vue'
 // import axios from 'axios'
-// import cobj from '@/constants/constants.js'
+import cobj from '@/constants/constants.js'
 // import { Hcont, ccodes } from '@/constants/constantsnew.js'
 import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
 const dJSON = require('dirty-json')
