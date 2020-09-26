@@ -6,7 +6,7 @@ export default {
     appJson: 'application/json',
     acctlMeths: 'Access-Control-Allow-Methods',
     acctlOrig: 'Access-Control-Allow-Origin',
-    ctType: 'Content-Type',
+    contType: 'Content-Type',
     jsonV: '2.0',
     invMethod: 'invokeView',
     REQtype: 'getAllProductIds',
@@ -20,7 +20,7 @@ export default {
     acctlMeths: 'Access-Control-Allow-Methods',
     acctlOrig: 'Access-Control-Allow-Origin',
     appJson: 'application/json',
-    ctType: 'Content-Type',
+    contType: 'Content-Type',
     jsonV: '2.0',
   },
 }

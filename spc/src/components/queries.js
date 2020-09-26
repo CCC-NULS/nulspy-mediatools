@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // /eslint camelcase: [2, {properties: "never"}]/
 /* eslint camelcase: ["warn", {allow: ["value_asset", "gas_limit", "gas_price", "contract_methodname", "contract_desc" ]}] */
 /* eslint space-before-function-paren: 0 */
@@ -12,11 +13,11 @@ import https from 'https'
 // const maxage = 'Access-Control-Max-Age' // preflight only
 // const maxageval = 1728000
 // const AccessContExpHeaders = 'Access-Control-Expose-Headers'
-const AccessContExpHeadersRange = 'Content-Length,Content-Range'
+// const AccessContExpHeadersRange = 'Content-Length,Content-Range'
 
 require('../constants/constantsnew.js')
-var [accStr, restTyps, aJson] = Object.values(Hcont)
-// contracts:  ["SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC"],
+var [accStr, restTypes, aaa, AccessContExpHeadersRange,
+  bbb, ccc, fff, ggg, jsonV] = Object.values(Hcont)
 
 function makeaxio() {
   var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
@@ -26,8 +27,8 @@ function makeaxio() {
       headers: {
         post: {
           Accept: accStr,
-          acctlMeths: restTyps,
-          ctType: aJson,
+          acctlMeths: restTypes,
+          [`filter[${Hcont.contType}]`]: jsonV,
           'Access-Control-Allow-Headers': rangelist,
         },
       },
@@ -88,8 +89,8 @@ export async function axiosGetProducts(chainid, contaddy, u3) {
         httpsAgent: new https.Agent({ keepAlive: true }),
         post: {
           Accept: accStr,
-          acctlMeths: restTyps,
-          ctType: aJson,
+          acctlMeths: restTypes,
+          'Content-Type': 'text/plain; charset=utf-8',
           'Access-Control-Expose-Headers': AccessContExpHeadersRange,
           'Access-Control-Allow-Headers': rangelist,
         },
