@@ -4,20 +4,13 @@
 /* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
-import { Hcont } from '../constants/constantsnew.js'
 import cobj from '@/constants/constants.js'
 import https from 'https'
 
-// const aclh = 'Access-Control-Allow-Headers'
-// const aclhlist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
-// const maxage = 'Access-Control-Max-Age' // preflight only
-// const maxageval = 1728000
-// const AccessContExpHeaders = 'Access-Control-Expose-Headers'
-// const AccessContExpHeadersRange = 'Content-Length,Content-Range'
-
-require('../constants/constantsnew.js')
-var [accStr, restTypes, aaa, AccessContExpHeadersRange,
-  bbb, ccc, fff, ggg, jsonV] = Object.values(Hcont)
+var accStr = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+var restTypes = '"GET, POST, HEAD, UPDATE"'
+// var AccessContExpHeadersRange = 'bytes=0-499'
+var jsonV = '2.0'
 
 function makeaxio() {
   var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
@@ -27,8 +20,8 @@ function makeaxio() {
       headers: {
         post: {
           Accept: accStr,
-          acctlMeths: restTypes,
-          [`filter[${Hcont.contType}]`]: jsonV,
+          'Access-Control-Allow-Methods': restTypes,
+          'Content-Type': 'text/plain; charset=utf-8',
           'Access-Control-Allow-Headers': rangelist,
         },
       },
@@ -83,15 +76,15 @@ export async function axiosGetProducts(chainid, contaddy, u3) {
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
           'Content-Type': 'text/plain; charset=utf-8',
           'Access-Control': '*',
-          'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+          'Access-Control-Expose-Headers': '*, Authorization',
           'Access-Control-Allow-Headers': rangelist,
         },
         httpsAgent: new https.Agent({ keepAlive: true }),
         post: {
-          Accept: accStr,
-          acctlMeths: restTypes,
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'Access-Control-Allow-Methods': restTypes,
           'Content-Type': 'text/plain; charset=utf-8',
-          'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+          'Access-Control-Expose-Headers': '*, Authorization',
           'Access-Control-Allow-Headers': rangelist,
         },
       },

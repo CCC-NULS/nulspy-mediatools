@@ -16,7 +16,6 @@ export default {
     accStr: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     restTypes: '"GET, POST, HEAD, UPDATE, PUT"',
     AccessContExpHeaders: 'Access-Control-Expose-Headers',
-    AccessContExpHeadersRange: '',
     acctlMeths: 'Access-Control-Allow-Methods',
     acctlOrig: 'Access-Control-Allow-Origin',
     appJson: 'application/json',
