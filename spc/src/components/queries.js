@@ -1,5 +1,6 @@
 // /eslint camelcase: [2, {properties: "never"}]/
 /* eslint camelcase: ["warn", {allow: ["value_asset", "gas_limit", "gas_price", "contract_methodname", "contract_desc" ]}] */
+/* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
 import { Hcont } from '../constants/constantsnew.js'
@@ -21,6 +22,7 @@ function makeaxio() {
   var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
   const axio = axios.create({
     defaults: {
+      httpsAgent: new https.Agent({ keepAlive: true }),
       headers: {
         post: {
           Accept: accStr,
@@ -42,7 +44,7 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, Url3) {
   const queryId = 900092
   const REQtype = 'getReviews'
   const vParams = [chainid, contaddy, REQtype, RETtype, lastlist]
-  const axiosi = makeaxio()
+  const axiosi = makeaxio
   console.log('line32 ')
 
   try {
@@ -72,27 +74,27 @@ export async function axiosGetProducts(chainid, contaddy, u3) {
   var axresult
   var thisproducts
   var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
-
-  const axio = axios.create({
-    defaults: {
-      headers: {
-        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Content-Type': 'text/plain; charset=utf-8',
-        'Access-Control': '*',
-        'Access-Control-Expose-Headers': AccessContExpHeadersRange,
-        'Access-Control-Allow-Headers': rangelist,
-      },
-      httpsAgent: new https.Agent({ keepAlive: true }),
-      post: {
-        Accept: accStr,
-        acctlMeths: restTyps,
-        ctType: aJson,
-        'Access-Control-Expose-Headers': AccessContExpHeadersRange,
-        'Access-Control-Allow-Headers': rangelist,
+  const axio = axios.create(
+    {
+      defaults: {
+        headers: {
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Access-Control': '*',
+          'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+          'Access-Control-Allow-Headers': rangelist,
+        },
+        httpsAgent: new https.Agent({ keepAlive: true }),
+        post: {
+          Accept: accStr,
+          acctlMeths: restTyps,
+          ctType: aJson,
+          'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+          'Access-Control-Allow-Headers': rangelist,
+        },
       },
     },
-  },
   )
   console.log('inside axiosGetProducts accStr & vParams: ' + accStr + ' - ' + vParams)
 
@@ -122,7 +124,7 @@ async function axiosGetContracts() {
 
   const REQtype = 'getAccountContractList'
   const vPARAMS = [this.chainid, this.contractaddy, REQtype, RETtype, LASTLIST]
-  const axiosi = makeaxio()
+  const axiosi = makeaxio
   try {
     var axresult
     console.log('axiosGetContracts vPARAMS: ' + vPARAMS)
@@ -154,7 +156,7 @@ export async function writeReview(wprod, wreview) {
   const vPARAMS = [cobj.data.cobj.chainid, sender, cobj.data.cobj.PW, value_asset, gas_limit, gas_price,
     contract, contract_methodname, contract_desc, args, remark]
 
-  const axiosi = makeaxio()
+  const axiosi = makeaxio
   try {
     var axresult
     console.log('axiosGetContracts vPARAMS: ' + vPARAMS)

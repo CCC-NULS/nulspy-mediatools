@@ -1,3 +1,4 @@
+/* eslint space-before-function-paren: 0 */
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import createPersistedState from "vuex-persistedstate";
@@ -9,40 +10,40 @@ export default new Vuex.Store({
     gHomeKeyCount: 0,
     gShowHomeBool: true,
     gShowAllrevs: false,
-    gMobile: false
+    gMobile: false,
   },
   mutations: {
-    gHomeKeyCountMut (state, theval) {
+    gHomeKeyCountMut(state, theval) {
       state.gHomeKeyCount = theval
     },
-    gShowHomeBoolMut (state, theval) {
+    gShowHomeBoolMut(state, theval) {
       state.gShowHomeBool = theval
     },
-    gShowAllrevsMut (state, theval) {
+    gShowAllrevsMut(state, theval) {
       state.gShowAllrevs = theval
     },
-    gMobileMut (state, theval) {
+    gMobileMut(state, theval) {
       state.gMobile = theval
-    }
+    },
   },
   getters: {
     getShowAllrevs: state => state.gShowAllrevs,
-    getShowHomeBool: state => state.gShowHomeBool
+    getShowHomeBool: state => state.gShowHomeBool,
   },
   actions: {
-    gHomeKeyCountAct (context, theval) {
+    gHomeKeyCountAct(context, theval) {
       context.commit('gHomeKeyCountMut', theval)
     },
-    gShowHomeBoolAct (context, theval) {
+    gShowHomeBoolAct(context, theval) {
       context.commit('gShowHomeBoolMut', theval)
     },
-    gShowAllrevsAct (context, theval) {
+    gShowAllrevsAct(context, theval) {
       context.commit('gShowAllrevsMut', theval)
     },
-    gMobileAct (context, theval) {
+    gMobileAct(context, theval) {
       context.commit('gMobileMut', theval)
-    }
+    },
   },
   modules: {
-  }
+  },
 })

@@ -12,6 +12,8 @@ module.exports = {
   },
 
   rules: {
+    'vuetify/grid-unknown-attributes': 'off',
+    'vuetify/no-legacy-grid': 'off',
     'no-console': 'off',
     'no-debugger': 'off',
     // https://github.com/babel/babel-eslint/issues/681#issuecomment-420663038

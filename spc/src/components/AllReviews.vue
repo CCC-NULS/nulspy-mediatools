@@ -1,10 +1,11 @@
+/* eslint-disable vuetify/grid-unknown-attributes */
+/* eslint-disable vue/max-attributes-per-line */
 <template>
   <v-row>
     <!-- top level col -->
     <v-col
       cols="12"
       md="6"
-      xs="12"
       class="d-flex flex-column"
     >
       <!-- * * * * * * * ENTIRE LEFT COLUMN card on left -->
@@ -241,7 +242,6 @@
     <v-col
       cols="12"
       md="6"
-      xs="12"
       class="d-flex flex-column"
     >
       <!-- ****** column card  -->
@@ -452,167 +452,140 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import axios from 'axios'
-import cobj from '@/constants/constants.js'
-// import { Hcont, ccodes } from '@/constants/constantsnew.js'
-import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
-const dJSON = require('dirty-json')
-const cjo = cobj.data.cobj
+  // import axios from 'axios'
+  // import { Hcont, ccodes } from '@/constants/constantsnew.js'
+  import cobj from '@/constants/constants.js'
+  import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
+  const dJSON = require('dirty-json')
+  const cjo = cobj.data.cobj
 
-// function strMapToObj (strMap) {
-//   const obj = Object.create(null)
-//   for (const [k, v] of strMap) {
-//     // We don’t escape the key '__proto__'
-//     // which can cause problems on older engines
-//     obj[k] = v
-//   }
-//   return obj
-// }
-
-function objToStrMap (obj) {
-  const strMap = new Map()
-  for (const k of Object.keys(obj)) {
-    console.log('converting...: ' + k)
-    strMap.set(k, obj[k])
+  async function axiosGetRevs () {
+    var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
+    const cid = 4810
+    const u3 = 'http://westteam.nulstar.com:8003'
+    const axr = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
+    const myresult = axr.data.result.result // step 1 stringify
+    const stepone = dJSON.parse(myresult)
+    this.reviewlist = stepone
+    this.cardkey += 1
   }
-  return strMap
-}
 
-// function jsonToStrMap (jsonStr) {
-//   return objToStrMap(JSON.parse(JSON.stringify(jsonStr)))
-// }
+  async function axiosGetProds () {
+    const c = cjo
+    console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.Url3)
+    const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.Url3)
+    const axrsorted = axr.slice().sort()
+    console.log('sorted: -- : ' + axrsorted)
+    this.productlist = []
+    this.productlist = Object.assign(axrsorted)
+    console.log('new this.productlist: ' + axrsorted)
+  }
 
-async function axiosGetRevs () {
-  var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
-  const cid = 4810
-  const u3 = 'http://westteam.nulstar.com:8003'
-  // console.log("line225 ")
-  const axr = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
-  const myresult = axr.data.result.result // step 1 stringify
-  const stepone = dJSON.parse(myresult)
-  this.reviewlist = stepone
-  // const steptwo = JSON.stringify(stepone)
-  this.cardkey += 1
-}
-
-async function axiosGetProds () {
-  const c = cjo
-  console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.Url3)
-  const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.Url3)
-  const axrsorted = axr.slice().sort()
-  console.log('sorted: -- : ' + axrsorted)
-  this.productlist = []
-  this.productlist = Object.assign(axrsorted)
-  console.log('new this.productlist: ' + axrsorted)
-}
-
-async function reloadProducts (wcat) {
-  var i = 0
-  while (i < 100) {
-    i += 1
-    await this.msleep(2000).then(() => {
-      this.axiosGetProds()
-    })
-    if (this.productlist.indexOf(wcat) > -1) {  // found it
-     break
+  async function reloadProducts (wcat) {
+    var i = 0
+    while (i < 100) {
+      i += 1
+      await this.msleep(2000).then(() => {
+        this.axiosGetProds()
+      })
+      if (this.productlist.indexOf(wcat) > -1) { // found it
+        break
+      }
     }
-  }
-  // reset results form
-  this.$refs.vselone.reset()
-  this.showprodkey += 1
-}
-
-async function wreview () {
-  this.writeresult = ' '
-  this.writeresultkey += 1
-  const wcat = this.vmcat
-  const wrev = this.vmrev
-  this.$refs.wform.reset()
-  console.log('reset the form')
-  console.log('wcat category being written to: ' + wcat)
-  console.log('wrev review being written: ' + wrev)
-  const axr = await this.writeReview(wcat, wrev)
-  if (typeof (axr.data.result) === 'undefined') {
-    var badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
-    alert(badanswerstr)
-  } else {
-    this.productlist = ['Please wait', 'Blockchain is updating']
+    // reset results form
+    this.$refs.vselone.reset()
     this.showprodkey += 1
-    console.log('wreview received response axr: ' + axr)
-    const axrstring = JSON.stringify(axr)
-    console.log('wreview received response myaxr: ' + axrstring)
-    const partresult = JSON.stringify(axr.data.result)
-    const partb = JSON.stringify(axr.status)
-    const partc = JSON.stringify(axr.statusText)
-    this.writeresult = partresult + '\nStatus code: ' + partb + ' Status text: ' + partc
+  }
+
+  async function wreview () {
+    this.writeresult = ' '
     this.writeresultkey += 1
-    this.reloadProducts(wcat)
-  }
-}
-
-function msleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time))
-}
-
-export default {
-  name: 'AllReviews',
-  data: () => ({
-    showprodkey: 0,
-    writeresultkey: 0,
-    prodkey: 0,
-    review: '',
-    writeresult: '',
-    vmcat: '',
-    vmrev: '',
-    productlist: [],
-    prodchoice: '',
-    reviewlist: '',
-    chainid: cjo.chainid,
-    contracts: ['SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC']
-  }),
-
-  computed: {
-    styleContract () {
-      return (window.outerWidth < 960) ? { fontSize: '11px' } : {}
-    },
-    styleTextareaSz () {
-      return (window.outerWidth < 960) ? { width: '224px' } : { width: '424px' }
-    },
-    computedHeight () {
-      return (window.outerWidth < 960) ? { height: '624px' } : { height: '424px' }
-    },
-    styleObjMaxWidth () {
-      return (window.outerWidth < 960) ? { 'max-width': '290px' } : { 'max-width': '424px' }
-    },
-    yesbig () {
-      return (window.outerWidth > 959)
+    const wcat = this.vmcat
+    const wrev = this.vmrev
+    this.$refs.wform.reset()
+    console.log('reset the form')
+    console.log('wcat category being written to: ' + wcat)
+    console.log('wrev review being written: ' + wrev)
+    const axr = await this.writeReview(wcat, wrev)
+    if (typeof (axr.data.result) === 'undefined') {
+      var badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
+      alert(badanswerstr)
+    } else {
+      this.productlist = ['Please wait', 'Blockchain is updating']
+      this.showprodkey += 1
+      console.log('wreview received response axr: ' + axr)
+      const axrstring = JSON.stringify(axr)
+      console.log('wreview received response myaxr: ' + axrstring)
+      const partresult = JSON.stringify(axr.data.result)
+      const partb = JSON.stringify(axr.status)
+      const partc = JSON.stringify(axr.statusText)
+      this.writeresult = partresult + '\nStatus code: ' + partb + ' Status text: ' + partc
+      this.writeresultkey += 1
+      this.reloadProducts(wcat)
     }
-  },
-  mounted () {
-    this.axiosGetProds() // get the prod list
-    if (window.outerWidth < 960) {
-      this.$store.dispatch('gMobileAct', true)
-      console.log('yes mobile')
-      console.log(this.$vuetify.application.top)
-    }
-  },
-  methods: {
-    msleep,
-    axiosGetRevs,
-    axiosGetProducts,
-    axiosGetProds,
-    writeReview,
-    wreview,
-    reloadProducts
   }
-}
+
+  function msleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time))
+  }
+
+  export default {
+    name: 'AllReviews',
+    data: () => ({
+      showprodkey: 0,
+      writeresultkey: 0,
+      prodkey: 0,
+      review: '',
+      writeresult: '',
+      vmcat: '',
+      vmrev: '',
+      productlist: [],
+      prodchoice: '',
+      reviewlist: '',
+      chainid: cjo.chainid,
+      contracts: ['SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'],
+    }),
+
+    computed: {
+      styleContract () {
+        return (window.outerWidth < 960) ? { fontSize: '11px' } : {}
+      },
+      styleTextareaSz () {
+        return (window.outerWidth < 960) ? { width: '224px' } : { width: '424px' }
+      },
+      computedHeight () {
+        return (window.outerWidth < 960) ? { height: '624px' } : { height: '424px' }
+      },
+      styleObjMaxWidth () {
+        return (window.outerWidth < 960) ? { 'max-width': '290px' } : { 'max-width': '424px' }
+      },
+      yesbig () {
+        return (window.outerWidth > 959)
+      },
+    },
+    mounted () {
+      this.axiosGetProds() // get the prod list
+      if (window.outerWidth < 960) {
+        this.$store.dispatch('gMobileAct', true)
+        console.log('yes mobile')
+        console.log(this.$vuetify.application.top)
+      }
+    },
+    methods: {
+      msleep,
+      axiosGetRevs,
+      axiosGetProducts,
+      axiosGetProds,
+      writeReview,
+      wreview,
+      reloadProducts,
+    },
+  }
 </script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
 
   .v-data-table__wrapper {

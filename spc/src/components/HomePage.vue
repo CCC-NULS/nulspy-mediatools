@@ -62,7 +62,7 @@
             <v-card
               id="groupcard2"
               mainfcard
-              class="d-inline-flex flex-row align-center justify-center mt-n9"
+              class="d-inline-flex flex-row align-center justify-center mt-n6"
               flat
               width="740px"
             >
@@ -132,22 +132,22 @@
 </template>
 
 <script>
-export default {
-  name: 'HomePage',
-  data: () => ({
-    x: 0
-  }),
-  computed: {
-    styleObject5 () {
-      return (window.outerWidth < 960) ? { fontSize: '16px' } : { fontSize: '34px' }
-    }
-  },
-  methods: {
-    showhomebool () {
-      return this.getgShowHomeBool
-    }
+  export default {
+    name: 'HomePage',
+    data: () => ({
+      x: 0,
+    }),
+    computed: {
+      styleObject5 () {
+        return (window.outerWidth < 960) ? { fontSize: '16px' } : { fontSize: '34px' }
+      },
+    },
+    methods: {
+      showhomebool () {
+        return this.getgShowHomeBool
+      },
+    },
   }
-}
 </script>
 
 <style>

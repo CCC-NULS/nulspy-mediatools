@@ -90,61 +90,59 @@
 </template>
 
 <script>
-// import store from '../store'
-
-export default {
-  name: 'AppyBar',
-  data: () => ({
-    homekey: 0,
-    btnprops: {
-      height: '45px',
-      'min-width': '40px',
-      'min-height': '20px',
-      'max-width': '220px',
-      'max-height': '120px',
-      dark: true,
-      medium: true,
-      color: 'blue-grey'
+  export default {
+    name: 'AppyBar',
+    data: () => ({
+      homekey: 0,
+      btnprops: {
+        height: '45px',
+        'min-width': '40px',
+        'min-height': '20px',
+        'max-width': '220px',
+        'max-height': '120px',
+        dark: true,
+        medium: true,
+        color: 'blue-grey',
+      },
+      abprops: {
+        width: '100%',
+        'min-width': '140px',
+        'max-width': '2000px',
+        'min-height': '0px',
+        'max-height': '250px',
+        elevation: 12,
+        prominent: false,
+        dark: true,
+      },
+    }),
+    computed: {
+      newHomeKeyCt () {
+        return this.$store.state.gHomeKeyCount
+      },
+      vheight () {
+        return window.outerWidth > 959 ? '120px' : '2px'
+      },
+      btnwidth () {
+        return window.outerWidth > 959 ? '220px' : '100px'
+      },
     },
-    abprops: {
-      width: '100%',
-      'min-width': '140px',
-      'max-width': '2000px',
-      'min-height': '0px',
-      'max-height': '250px',
-      elevation: 12,
-      prominent: false,
-      dark: true
-    }
-  }),
-  computed: {
-    newHomeKeyCt () {
-      return this.$store.state.gHomeKeyCount
+    methods: {
+      homeclick () {
+        let newcount = this.newHomeKeyCt
+        newcount += 1
+        this.$store.dispatch('gShowHomeBoolAct', true) // show home page
+        this.$store.dispatch('gShowAllrevsAct', false) // hide reviews
+        this.$store.dispatch('gHomeKeyCountAct', newcount) // up the number
+      },
+      allrevsclick () {
+        let newcount = this.newHomeKeyCt
+        newcount += 1
+        this.$store.dispatch('gShowHomeBoolAct', false)
+        this.$store.dispatch('gShowAllrevsAct', true)
+        this.$store.dispatch('gHomeKeyCountAct', newcount)
+      },
     },
-    vheight () {
-      return window.outerWidth > 959 ? '120px' : '2px'
-    },
-    btnwidth () {
-      return window.outerWidth > 959 ? '220px' : '100px'
-    }
-  },
-  methods: {
-    homeclick () {
-      let newcount = this.newHomeKeyCt
-      newcount += 1
-      this.$store.dispatch('gShowHomeBoolAct', true) // show home page
-      this.$store.dispatch('gShowAllrevsAct', false) // hide reviews
-      this.$store.dispatch('gHomeKeyCountAct', newcount) // up the number
-    },
-    allrevsclick () {
-      let newcount = this.newHomeKeyCt
-      newcount += 1
-      this.$store.dispatch('gShowHomeBoolAct', false)
-      this.$store.dispatch('gShowAllrevsAct', true)
-      this.$store.dispatch('gHomeKeyCountAct', newcount)
-    }
   }
-}
 </script>
 
 <style scoped>

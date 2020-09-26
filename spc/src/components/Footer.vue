@@ -46,30 +46,30 @@
 </template>
 
 <script>
-export default {
-  name: 'Footer',
+  export default {
+    name: 'Footer',
 
-  data: () => ({
-    links: [
-      {
-        href: 'http://nuls.io',
-        text: 'NULS'
-      },
-      {
-        href: 'http://nuls.io',
-        text: 'About Us'
-      },
-      {
-        href: 'http://nuls.io',
-        text: 'Blog'
-      },
-      {
-        href: 'http://nuls.io',
-        text: 'Licenses'
-      }
-    ]
-  })
-}
+    data: () => ({
+      links: [
+        {
+          href: 'http://nuls.io',
+          text: 'NULS',
+        },
+        {
+          href: 'http://nuls.io',
+          text: 'About Us',
+        },
+        {
+          href: 'http://nuls.io',
+          text: 'Blog',
+        },
+        {
+          href: 'http://nuls.io',
+          text: 'Licenses',
+        },
+      ],
+    }),
+  }
 </script>
 
 <style lang="sass">

@@ -10,28 +10,28 @@
 </template>
 
 <script>
-export default {
-  name: 'ChipGray',
-  props: {
-    tlabel: {
-      type: String,
-      default: 'chip',
-      required: false
-    }
-  },
-  data: () => ({
-    cardyprops2: {
-      width: '190px',
-      height: '34px',
-      'max-width': '190px',
-      'min-width': '120px',
-      'min-height': '20px',
-      'max-height': '550px',
-      color: 'blue-grey darken-2',
-      dark: true
-    }
-  })
-}
+  export default {
+    name: 'ChipGray',
+    props: {
+      tlabel: {
+        type: String,
+        default: 'chip',
+        required: false,
+      },
+    },
+    data: () => ({
+      cardyprops2: {
+        width: '190px',
+        height: '34px',
+        'max-width': '190px',
+        'min-width': '120px',
+        'min-height': '20px',
+        'max-height': '550px',
+        color: 'blue-grey darken-2',
+        dark: true,
+      },
+    }),
+  }
 </script>
 
 <style>
