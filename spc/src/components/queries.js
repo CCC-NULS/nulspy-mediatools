@@ -1,25 +1,40 @@
 // /eslint camelcase: [2, {properties: "never"}]/
-/*eslint camelcase: ["warn", {allow: ["value_asset", "gas_limit", "gas_price", "contract_methodname", "contract_desc" ]}]*/
+/* eslint camelcase: ["warn", {allow: ["value_asset", "gas_limit", "gas_price", "contract_methodname", "contract_desc" ]}] */
 
 import axios from 'axios'
-import Hcont from '../constants/constantsnew.js'
+import { Hcont } from '../constants/constantsnew.js'
 import cobj from '@/constants/constants.js'
+import https from 'https'
+
+// const aclh = 'Access-Control-Allow-Headers'
+// const aclhlist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
+// const maxage = 'Access-Control-Max-Age' // preflight only
+// const maxageval = 1728000
+// const AccessContExpHeaders = 'Access-Control-Expose-Headers'
+const AccessContExpHeadersRange = 'Content-Length,Content-Range'
+
 require('../constants/constantsnew.js')
 var [accStr, restTyps, aJson] = Object.values(Hcont)
 // contracts:  ["SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC"],
 
-function makeaxio () {
+function makeaxio() {
+  var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
   const axio = axios.create({
     defaults: {
       headers: {
-        post: { Accept: accStr, acctlMeths: restTyps, ctType: aJson }
-      }
-    }
+        post: {
+          Accept: accStr,
+          acctlMeths: restTyps,
+          ctType: aJson,
+          'Access-Control-Allow-Headers': rangelist,
+        },
+      },
+    },
   })
   return axio
 }
 
-export async function axiosGetReviewsMain (chainid, contaddy, productId, Url3) {
+export async function axiosGetReviewsMain(chainid, contaddy, productId, Url3) {
   const invMethod = 'invokeView'
   const RETtype = '(String productId) return Ljava/util/List;'
   const lastlist = [productId]
@@ -37,7 +52,7 @@ export async function axiosGetReviewsMain (chainid, contaddy, productId, Url3) {
       jsonrpc: jsonV,
       method: invMethod,
       id: queryId,
-      params: vParams
+      params: vParams,
     })
   } catch (e) {
     console.log(e)
@@ -46,7 +61,7 @@ export async function axiosGetReviewsMain (chainid, contaddy, productId, Url3) {
   return axresult
 }
 
-export async function axiosGetProducts (chainid, contaddy, u3) {
+export async function axiosGetProducts(chainid, contaddy, u3) {
   console.log('here now')
   const invMethod = 'invokeView'
   const REQtype = 'getAllProductIds'
@@ -56,14 +71,29 @@ export async function axiosGetProducts (chainid, contaddy, u3) {
   const vParams = [chainid, contaddy, REQtype, RETtype, lastlist]
   var axresult
   var thisproducts
+  var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
 
   const axio = axios.create({
     defaults: {
       headers: {
-        post: { Accept: accStr, acctlMeths: restTyps, ctType: aJson }
-      }
-    }
-  })
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Access-Control': '*',
+        'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+        'Access-Control-Allow-Headers': rangelist,
+      },
+      httpsAgent: new https.Agent({ keepAlive: true }),
+      post: {
+        Accept: accStr,
+        acctlMeths: restTyps,
+        ctType: aJson,
+        'Access-Control-Expose-Headers': AccessContExpHeadersRange,
+        'Access-Control-Allow-Headers': rangelist,
+      },
+    },
+  },
+  )
   console.log('inside axiosGetProducts accStr & vParams: ' + accStr + ' - ' + vParams)
 
   try {
@@ -71,7 +101,7 @@ export async function axiosGetProducts (chainid, contaddy, u3) {
       jsonrpc: jsonV,
       method: invMethod,
       id: 900099,
-      params: vParams
+      params: vParams,
     })
   } catch (e) {
     console.log(e)
@@ -82,7 +112,7 @@ export async function axiosGetProducts (chainid, contaddy, u3) {
   return thisproducts
 }
 
-async function axiosGetContracts () {
+async function axiosGetContracts() {
   var productId = this.prodchoice
   const invMethod = 'invokeView'
   const RETtype = '(String productId) return Ljava/util/List;'
@@ -100,7 +130,7 @@ async function axiosGetContracts () {
       jsonrpc: jsonV,
       method: invMethod,
       id: queryId,
-      params: vPARAMS
+      params: vPARAMS,
     })
   } catch (e) {
     console.log(e)
@@ -109,7 +139,7 @@ async function axiosGetContracts () {
   console.log('this.reviews: ' + this.reviews)
   this.cardkey += 1
 }
-export async function writeReview (wprod, wreview) {
+export async function writeReview(wprod, wreview) {
   const contract = cobj.data.cobj.contaddy
   const sender = cobj.data.cobj.SENDER
   const value_asset = cobj.data.cobj.VALUE_ASSET // val * multiplier
@@ -132,18 +162,18 @@ export async function writeReview (wprod, wreview) {
       jsonrpc: '2.0',
       method: invMethod,
       id: 900099,
-      params: vPARAMS
+      params: vPARAMS,
     })
   } catch (e) { console.log(e) }
   return axresult
 }
 
 export const MyQueries = {
-  axiosGetContracts
+  axiosGetContracts,
 }
 
 export default {
   methods: {
-    makeaxio
-  }
+    makeaxio,
+  },
 }

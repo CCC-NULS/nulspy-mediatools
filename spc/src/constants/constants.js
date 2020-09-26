@@ -25,12 +25,12 @@ const cobj = {
   GAS_PRICE,
   GAS_LIMIT,
   Url3,
-  Url4
+  Url4,
 }
 
 export default {
   name: 'constants',
   data: {
-    cobj
-  }
+    cobj,
+  },
 }
