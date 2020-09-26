@@ -52,19 +52,19 @@
     data: () => ({
       links: [
         {
-          href: 'http://nuls.io',
+          href: 'https://nuls.io',
           text: 'NULS',
         },
         {
-          href: 'http://nuls.io',
+          href: 'https://nuls.io',
           text: 'About Us',
         },
         {
-          href: 'http://nuls.io',
+          href: 'https://nuls.io',
           text: 'Blog',
         },
         {
-          href: 'http://nuls.io',
+          href: 'https://nuls.io',
           text: 'Licenses',
         },
       ],

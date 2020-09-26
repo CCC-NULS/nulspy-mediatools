@@ -11,8 +11,8 @@ var VALUE_ASSET = 2500000000
 var GAS_PRICE = 90000
 var GAS_LIMIT = 10000000
 
-var Url3 = 'http://westteam.nulstar.com:8003'
-var Url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
+var Url3 = 'https://westteam.nulstar.com:8003'
+var Url4 = 'https://westteam.nulstar.com:8004/jsonrpc'
 
 const cobj = {
   chainid,

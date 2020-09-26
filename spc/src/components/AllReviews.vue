@@ -462,7 +462,7 @@
   async function axiosGetRevs () {
     var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
     const cid = 4810
-    const u3 = 'http://westteam.nulstar.com:8003'
+    const u3 = 'https://westteam.nulstar.com:8003'
     const axr = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
     const myresult = axr.data.result.result // step 1 stringify
     const stepone = dJSON.parse(myresult)
