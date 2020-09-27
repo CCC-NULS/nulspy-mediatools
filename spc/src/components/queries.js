@@ -1,33 +1,39 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-unused-vars */
 // /eslint camelcase: [2, {properties: "never"}]/
 /* eslint camelcase: ["warn", {allow: ["valueasset", "gaslimit", "gasprice", "contract_methodname", "contractdesc" ]}] */
 /* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
-import cobj from '@/constants/constants.js'
+import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
 
 var accStr = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-var restTypes = '"GET, POST, HEAD, UPDATE"'
-// var AccessContExpHeadersRange = 'bytes=0-499'
+var restTypes = '"GET, POST, HEAD, OPTIONS"'
+// var Access-Control-Expose-Headers-Range = 'bytes=0-499'
 var jsonversion = '2.0'
 
-function makeaxio() {
-  var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
-  const axio = axios.create({
+function mymakeaxio() {
+  const locAxiosConfig = axios.create({
+    httpsAgent: new https.Agent({ keepAlive: true }),
     defaults: {
-      httpsAgent: new https.Agent({ keepAlive: true }),
       headers: {
+        common: {
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Content-Type': 'application/json;charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+        },
         post: {
-          Accept: accStr,
-          'Access-Control-Allow-Methods': restTypes,
-          'Content-Type': 'text/plain; charset=utf-8',
-          'Access-Control-Allow-Headers': rangelist,
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Content-Type': 'application/json;charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
         },
       },
     },
   })
-  return axio
+  return locAxiosConfig
 }
 
 export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
@@ -38,13 +44,13 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const queryid = 900092
   const reqtype = 'getReviews'
   const vParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  const axiosi = makeaxio
+  const madeaxiosGetRevs = mymakeaxio()
   console.log('line32 ')
 
   try {
     var axresult
     console.log('inside axiosPost vParams: ' + vParams)
-    axresult = await axiosi.post(url3, {
+    axresult = await madeaxiosGetRevs.post(url3, {
       jsonrpc: jsonversion,
       method: invokemethod,
       id: queryid,
@@ -58,42 +64,25 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
 }
 
 export async function axiosGetProducts(chainid, contaddy, u3) {
-  console.log('here now')
+  console.log('here now in queries axiosGetProducts')
   const invokemethod = 'invokeView'
   const reqtype = 'getAllProductIds'
   const returntype = '() return String'
   const lastlist = []
   const jsonversion = '2.0'
   const vParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  var axresult
-  var thisproducts
-  var rangelist = 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range'
-  const axio = axios.create(
-    {
-      defaults: {
-        headers: {
-          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-          'Content-Type': 'text/plain; charset=utf-8',
-          'Access-Control': '*',
-          'Access-Control-Expose-Headers': '*, Authorization',
-          'Access-Control-Allow-Headers': rangelist,
-        },
-        httpsAgent: new https.Agent({ keepAlive: true }),
-        post: {
-          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-          'Access-Control-Allow-Methods': restTypes,
-          'Content-Type': 'text/plain; charset=utf-8',
-          'Access-Control-Expose-Headers': '*, Authorization',
-          'Access-Control-Allow-Headers': rangelist,
-        },
-      },
-    },
-  )
+  const madeaxiosGetProds = mymakeaxio()
+  console.log('inside axiosGetProducts')
+  var mystr = Object.getOwnPropertyNames(madeaxiosGetProds)
+  console.log(mystr)
+  console.log(Object.values(madeaxiosGetProds))
   console.log('inside axiosGetProducts accStr & vParams: ' + accStr + ' - ' + vParams)
+  console.log('inside axiosGetProducts defaults: ' + madeaxiosGetProds.defaults)
+  console.log('sending a post: ' + madeaxiosGetProds.defaults + ' - ' + madeaxiosGetProds.headers)
+  var axresult
 
   try {
-    axresult = await axio.post(u3, {
+    axresult = await madeaxiosGetProds.post(u3, {
       jsonrpc: jsonversion,
       method: invokemethod,
       id: 900099,
@@ -102,6 +91,7 @@ export async function axiosGetProducts(chainid, contaddy, u3) {
   } catch (e) {
     console.log(e)
   }
+  var thisproducts
   thisproducts = JSON.parse(axresult.data.result.result)
   console.log('thisproducts: ' + thisproducts)
   // this.cardkey += 1;
@@ -118,11 +108,13 @@ async function axiosGetContracts() {
 
   const reqtype = 'getAccountContractList'
   const vparams = [this.chainid, this.contractaddy, reqtype, returntype, lastlist]
-  const axiosi = makeaxio
+  const madeaxiosGetContracts = mymakeaxio()
+  console.log('just made new axios object in axiosGetContracts')
+  console.log('here is some info')
   try {
     var axresult
     console.log('axiosGetContracts vparams: ' + vparams)
-    axresult = await axiosi.post(this.url3, {
+    axresult = await madeaxiosGetContracts.post(this.url3, {
       jsonrpc: jsonversion,
       method: invokemethod,
       id: queryid,
@@ -136,25 +128,25 @@ async function axiosGetContracts() {
   this.cardkey += 1
 }
 export async function writeReview(writeproduct, wreview) {
-  const contract = cobj.data.cobj.contaddy
-  const sender = cobj.data.cobj.sender
-  const valueasset = cobj.data.cobj.valueasset // val * multiplier
-  const gasprice = cobj.data.cobj.gasprice
-  const gaslimit = cobj.data.cobj.gaslimit
+  const contract = rDataObj.data.requestDatacontaddy
+  const sender = rDataObj.data.requestDatasender
+  const valueasset = rDataObj.data.requestDatavalueasset // val * multiplier
+  const gasprice = rDataObj.data.requestDatagasprice
+  const gaslimit = rDataObj.data.requestDatagaslimit
   const args = [writeproduct, wreview]
   const contract_methodname = 'writeReview'
   const invokemethod = 'contractCall'
   const remark = 'call contract'
   const contractdesc = '(String productId, String reviewComments) return LReviewContract$Review;'
 
-  const vparams = [cobj.data.cobj.chainid, sender, cobj.data.cobj.passwd, valueasset, gaslimit, gasprice,
+  const vparams = [rDataObj.data.requestDatachainid, sender, rDataObj.data.requestDatapasswd, valueasset, gaslimit, gasprice,
     contract, contract_methodname, contractdesc, args, remark]
 
-  const axiosi = makeaxio
+  const madeaxiosWriteReview = mymakeaxio()
   try {
     var axresult
     console.log('axiosGetContracts vparams: ' + vparams)
-    axresult = await axiosi.post(cobj.data.cobj.url4, {
+    axresult = await madeaxiosWriteReview.post(rDataObj.data.requestDataurl4, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,
@@ -170,6 +162,6 @@ export const MyQueries = {
 
 export default {
   methods: {
-    makeaxio,
+    mymakeaxio,
   },
 }

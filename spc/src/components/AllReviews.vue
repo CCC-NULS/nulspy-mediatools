@@ -452,10 +452,10 @@
 </template>
 
 <script>
-  import reqDataObj from '@/constants/constants.js'
+  import rDataObj from '@/constants/constants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
-  const cjo = reqDataObj.data.reqDataObj
+  const reqData = rDataObj.data.requestData
 
   async function axiosGetRevs () {
     var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
@@ -469,7 +469,7 @@
   }
 
   async function axiosGetProds () {
-    const c = cjo
+    const c = reqData
     console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.Url3)
     const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.Url3)
     const axrsorted = axr.slice().sort()
@@ -540,7 +540,7 @@
       productlist: [],
       prodchoice: '',
       reviewlist: '',
-      chainid: cjo.chainid,
+      chainid: reqData.chainid,
       contracts: ['SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'],
     }),
 
