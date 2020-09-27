@@ -452,19 +452,17 @@
 </template>
 
 <script>
-  // import axios from 'axios'
-  // import { Hcont, ccodes } from '@/constants/constantsnew.js'
-  import cobj from '@/constants/constants.js'
+  import reqDataObj from '@/constants/constants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
-  const cjo = cobj.data.cobj
+  const cjo = reqDataObj.data.reqDataObj
 
   async function axiosGetRevs () {
     var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
     const cid = 4810
     const u3 = 'https://westteam.nulstar.com:8003'
-    const axr = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
-    const myresult = axr.data.result.result // step 1 stringify
+    const axiosrespget = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
+    const myresult = axiosrespget.data.result.result // step 1 stringify
     const stepone = dJSON.parse(myresult)
     this.reviewlist = stepone
     this.cardkey += 1
@@ -506,19 +504,19 @@
     console.log('reset the form')
     console.log('wcat category being written to: ' + wcat)
     console.log('wrev review being written: ' + wrev)
-    const axr = await this.writeReview(wcat, wrev)
-    if (typeof (axr.data.result) === 'undefined') {
+    const axiosresp = await this.writeReview(wcat, wrev)
+    if (typeof (axiosresp.data.result) === 'undefined') {
       var badanswerstr = 'Write Review Failed. Make sure both fields contain alpha-numeric values.'
       alert(badanswerstr)
     } else {
       this.productlist = ['Please wait', 'Blockchain is updating']
       this.showprodkey += 1
-      console.log('wreview received response axr: ' + axr)
-      const axrstring = JSON.stringify(axr)
-      console.log('wreview received response myaxr: ' + axrstring)
-      const partresult = JSON.stringify(axr.data.result)
-      const partb = JSON.stringify(axr.status)
-      const partc = JSON.stringify(axr.statusText)
+      console.log('wreview received response axiosresp: ' + axiosresp)
+      const axiosrespstring = JSON.stringify(axiosresp)
+      console.log('wreview received response myaxiosresp: ' + axiosrespstring)
+      const partresult = JSON.stringify(axiosresp.data.result)
+      const partb = JSON.stringify(axiosresp.status)
+      const partc = JSON.stringify(axiosresp.statusText)
       this.writeresult = partresult + '\nStatus code: ' + partb + ' Status text: ' + partc
       this.writeresultkey += 1
       this.reloadProducts(wcat)
