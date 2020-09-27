@@ -452,7 +452,7 @@
 </template>
 
 <script>
-  import rDataObj from '@/constants/constants.js'
+  import rDataObj from '@/constants/dataConstants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
   const reqData = rDataObj.data.requestData
@@ -470,8 +470,8 @@
 
   async function axiosGetProds () {
     const c = reqData
-    console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.Url3)
-    const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.Url3)
+    console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.url3)
+    const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.url3)
     const axrsorted = axr.slice().sort()
     console.log('sorted: -- : ' + axrsorted)
     this.productlist = []
