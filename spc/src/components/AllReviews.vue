@@ -1,5 +1,3 @@
-/* eslint-disable vuetify/grid-unknown-attributes */
-/* eslint-disable vue/max-attributes-per-line */
 <template>
   <v-row>
     <!-- top level col -->
@@ -452,6 +450,8 @@
 </template>
 
 <script>
+  /* eslint-disable vuetify/grid-unknown-attributes */
+  /* eslint-disable vue/max-attributes-per-line */
   import rDataObj from '@/constants/dataConstants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
