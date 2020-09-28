@@ -11,7 +11,7 @@
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
-const fs = require('graceful-fs')
+import fs from 'graceful-fs'
 
 var myhttpsAgent = new https.Agent({
   cert: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
