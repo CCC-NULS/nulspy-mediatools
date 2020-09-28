@@ -12,7 +12,7 @@ import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
 // var fs = require('fs')
-const fs = window.require('fs')
+const fs = require('fs')
 
 var thecert = fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem')
 var thekey = fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem')
