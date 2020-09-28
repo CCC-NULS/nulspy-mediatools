@@ -11,7 +11,7 @@
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
-const fs = require('fs')
+import fs from 'fs'
 
 const myhttpsAgent = new https.Agent({
   // ca: fs.readFileSync("./resource/bundle.crt"),
