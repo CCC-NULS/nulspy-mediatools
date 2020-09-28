@@ -11,12 +11,15 @@
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
-import fs from 'fs'
+// var fs = require('fs')
+const fs = window.require('fs')
 
-const myhttpsAgent = new https.Agent({
-  // ca: fs.readFileSync("./resource/bundle.crt"),
-  cert: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
-  key: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
+var thecert = fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem')
+var thekey = fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem')
+
+var myhttpsAgent = new https.Agent({
+  cert: thecert,
+  key: thekey,
   passphrase: 'nancy',
   keepAlive: true,
 })
