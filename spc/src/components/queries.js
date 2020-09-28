@@ -17,6 +17,7 @@ const myhttpsAgent = new https.Agent({
   // ca: fs.readFileSync("./resource/bundle.crt"),
   cert: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
   key: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
+  passphrase: 'nancy',
   keepAlive: true,
 })
 
