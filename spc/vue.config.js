@@ -1,5 +1,5 @@
 // import https from 'https'
-const fs = require('fs')
+const fs = require('graceful-fs')
 
 module.exports = {
 publicPath: process.env.NODE_ENV === 'production' ? '/spc/' : '/',
