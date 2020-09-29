@@ -11,13 +11,12 @@
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
 import https from 'https'
-import fs from 'graceful-fs'
+const fsx = require('fs-extra')
+
 
 var myhttpsAgent = new https.Agent({
-  cert: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
-  key: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
-  passphrase: 'nancy',
-  keepAlive: true,
+  cert: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
+  key: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
 })
 
 const postOrGetHeader = {
