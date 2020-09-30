@@ -1,3 +1,4 @@
+ /* eslint-disable */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -10,12 +11,12 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: () => import('../components/HomePage'),
+      component: () => import('../components/HomePage.vue'),
       children: [
         {
           name: 'AllReviews',
           path: '/allreviews',
-          component: () => import('../components/AllReviews'),
+          component: () => import('../components/AllReviews.vue'),
         },
       ],
     },

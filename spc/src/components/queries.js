@@ -10,14 +10,6 @@
 
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
-//import https from 'https'
-#const fsx = require('fs-extra')
-
-
-//var myhttpsAgent = new https.Agent({
- // cert: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
- // key: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
-//})
 
 const postOrGetHeader = {
   Host: 'westteam.nulstar.com',
