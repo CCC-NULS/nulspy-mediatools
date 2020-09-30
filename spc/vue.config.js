@@ -1,23 +1,25 @@
-// import https from 'https'
-const fsx = require('fs-extra')
+// https://cli.vuejs.org/config
 
 module.exports = {
-publicPath: '/spc/',
-  outputDir: 'dist/',
-  pages: {
-    index: {
-      entry: 'src/main.js',
-    },
-  },
+  publicPath: '/spc/',
   devServer: {
     disableHostCheck: true,
-    https: {
-      cert: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
-      key: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
-    },
-   public: 'https://localhost:5005/',
   },
-  transpileDependencies: ['vuetify'],
-  lintOnSave: false,
-}
+  transpileDependencies: [
+    'vuetify'
+  ],
+  runtimeCompiler: true,
+  chainWebpack: config => {
+    plugins: [
+      new GoogleFontsPlugin({
+        fonts: [
+          { family: "Rubik" },
+          { family: "Montserrat" },
+          { family: "Raleway" },
+          { family: "PT Sans Narrow" },
+        ]
+      })
+    ]
+  }
+ }
 
