@@ -1,4 +1,4 @@
-// https://cli.vuejs.org/config
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 module.exports = {
   publicPath: '/spc/',
