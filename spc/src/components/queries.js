@@ -14,26 +14,21 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const reqtype = 'getReviews'
   const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlist]
   console.log('inside axiosGetReviewsMain')
-
+  console.log('vals:  chainid: ' + chainid + contaddy + "  reqtype: " + reqtype + " productId: " + productId)
   try {
-    var axresult
-    axresult = await axios.post(url3, {
+    var axresultg
+    axresultg = await axios.post(url3, {
       method: invokemethod,
       id: queryid,
       params: getReviewsParams,
-      headers: {
-        Host: 'westteam.nulstar.com',
-        Origin: 'http://westteam.nulstar.com',
-        'Content-Type': 'application/json',
-      },
     })
   } catch (e) {
     console.log(e)
   }
   console.log('done in axiosGetReviewsMain')
 
-  console.log('axresult returning: ' + axresult)
-  return axresult
+  console.log('axresultg returning: ' + axresultg)
+  return axresultg
 }
 
 export async function axiosGetProducts(chainid, contaddy, url3) {
@@ -57,8 +52,6 @@ export async function axiosGetProducts(chainid, contaddy, url3) {
       id: 99099,
       params: getProdsParams,
       headers: {
-        Host: 'westteam.nulstar.com',
-        Origin: 'http://westteam.nulstar.com',
         'Content-Type': 'application/json',
       },
     })
@@ -92,9 +85,7 @@ async function axiosGetContracts() {
       id: queryid,
       params: vparams,
       headers: {
-        Host: 'westteam.nulstar.com',
-        Origin: 'http://westteam.nulstar.com',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
       },
     })
   } catch (e) {
@@ -132,9 +123,7 @@ export async function writeReview(writeproduct, wreview) {
       id: 900099,
       params: vparams,
       headers: {
-        Host: 'westteam.nulstar.com',
-        Origin: 'http://westteam.nulstar.com',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
       },
     })
   } catch (e) { console.log(e) }

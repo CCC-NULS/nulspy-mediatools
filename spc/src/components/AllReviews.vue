@@ -461,6 +461,9 @@
     const cid = 4810
     const u3 = 'http://westteam.nulstar.com:8003'
     const axiosrespget = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
+    console.log("axiosrespget: " + axiosrespget) 
+    console.log("vals: " + contaddy + " " + this.prodchoice) 
+
     const myresult = axiosrespget.data.result.result // step 1 stringify
     const stepone = dJSON.parse(myresult)
     this.reviewlist = stepone
@@ -480,7 +483,7 @@
 
   async function reloadProducts (wcat) {
     var i = 0
-    while (i < 100) {
+    while (i < 10) {
       i += 1
       await this.msleep(2000).then(() => {
         this.axiosGetProds()
