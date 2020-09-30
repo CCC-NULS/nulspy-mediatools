@@ -1,39 +1,10 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-unused-vars */
-// /eslint camelcase: [2, {properties: "never"}]/
 /* eslint camelcase: ["warn", {allow: ["valueasset", "gaslimit", "gasprice", "contract_methodname", "contractdesc" ]}] */
 /* eslint space-before-function-paren: 0 */
-// axios.get(url, { httpsAgent }) // // or // const instance = axios.create({ myhttpsAgent })
-
-// responseType = json
-// withCredentials: true,
 
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
-
-const postOrGetHeader = {
-  Host: 'westteam.nulstar.com',
-  Origin: 'http://westteam.nulstar.com',
-  'Content-Type': 'application/json',
-}
-
-const postOptHeader = {
-  Host: 'westteam.nulstar.com',
-  Origin: 'http://westteam.nulstar.com',
-  'Access-Control-Request-Method': 'POST',
-  'Access-Control-Request-Headers': 'Authorization, Content-Type',
-}
-
-const myconfig = axios.create({
-  //myhttpsAgent,
-  defaults: {
-    headers: {
-      options: postOptHeader,
-      post: postOrGetHeader,
-      get: postOrGetHeader,
-    },
-  },
-})
 
 export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const invokemethod = 'invokeView'
@@ -42,52 +13,61 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const queryid = 900092
   const reqtype = 'getReviews'
   const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  const madeaxiosGetRevs = myconfig()
   console.log('inside axiosGetReviewsMain')
 
   try {
     var axresult
-    axresult = await madeaxiosGetRevs.post(url3, {
+    axresult = await axios.post(url3, {
       method: invokemethod,
       id: queryid,
       params: getReviewsParams,
+      headers: {
+        Host: 'westteam.nulstar.com',
+        Origin: 'http://westteam.nulstar.com',
+        'Content-Type': 'application/json',
+      },
     })
   } catch (e) {
     console.log(e)
   }
+  console.log('done in axiosGetReviewsMain')
+
   console.log('axresult returning: ' + axresult)
   return axresult
 }
 
-export async function axiosGetProducts(chainid, contaddy, u3) {
+export async function axiosGetProducts(chainid, contaddy, url3) {
   console.log('here now in queries axiosGetProducts')
   const invokemethod = 'invokeView'
   const reqtype = 'getAllProductIds'
   const returntype = '() return String'
   const lastlist = []
   const getProdsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  const getProdConf = myconfig()
-  axios.interceptors.request.use(getProdConf => {
-    console.log(getProdConf)
-    return getProdConf
-  })
-  console.log('inside axiosGetProducts' + getProdConf.defaults + ' - ' + getProdConf.headers)
+  // axios.interceptors.request.use(getProdConf => {
+  //   console.log(getProdConf)
+  //   return getProdConf
+  // })
 
   try {
     var axresult
     console.log('axiosGetContracts getProdsParams: ' + getProdsParams)
-    axresult = await getProdConf.post(this.url3, {
+    axresult = await axios.post(url3, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 99099,
       params: getProdsParams,
+      headers: {
+        Host: 'westteam.nulstar.com',
+        Origin: 'http://westteam.nulstar.com',
+        'Content-Type': 'application/json',
+      },
     })
   } catch (e) {
     console.log(e)
   }
   var thisproducts
   thisproducts = JSON.parse(axresult.data.result.result)
-  console.log('thisproducts: ' + thisproducts)
+  console.log('done in axiosGetProducts. thisproducts: ' + thisproducts)
   // this.cardkey += 1;
   return thisproducts
 }
@@ -98,23 +78,30 @@ async function axiosGetContracts() {
   const returntype = '(String productId) return Ljava/util/List;'
   const lastlist = [productId]
   const queryid = 900097
+  const myurl3 = 'http://westteam.nulstar.com:8003'
 
   const reqtype = 'getAccountContractList'
   const vparams = [this.chainid, this.contractaddy, reqtype, returntype, lastlist]
-  const madeaxiosGetContracts = myconfig()
   console.log('just made new axios object in axiosGetContracts')
   try {
     var axresult
     console.log('axiosGetContracts vparams: ' + vparams)
-    axresult = await madeaxiosGetContracts.post(this.url3, {
+    axresult = await axios.post(myurl3, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: queryid,
       params: vparams,
+      headers: {
+        Host: 'westteam.nulstar.com',
+        Origin: 'http://westteam.nulstar.com',
+        'Content-Type': 'application/json',
+      },
     })
   } catch (e) {
     console.log(e)
   }
+  console.log('done in axiosGetContracts')
+
   this.reviews = JSON.parse(axresult.data.result.result)
   console.log('this.reviews: ' + this.reviews)
   this.cardkey += 1
@@ -136,14 +123,19 @@ export async function writeReview(writeproduct, wreview) {
     contract, contract_methodname, contractdesc, args, remark]
   console.log('axiosGetContracts vparams: ' + vparams)
 
-  const madeaxiosWriteReview = myconfig()
   try {
     var axresult
-    axresult = await madeaxiosWriteReview.post(rDataObj.data.requestDataurl4, {
+    const myurl4 = rDataObj.data.requestData.url4
+    axresult = await axios.post(myurl4, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,
       params: vparams,
+      headers: {
+        Host: 'westteam.nulstar.com',
+        Origin: 'http://westteam.nulstar.com',
+        'Content-Type': 'application/json',
+      },
     })
   } catch (e) { console.log(e) }
   return axresult
@@ -153,8 +145,3 @@ export const MyQueries = {
   axiosGetContracts,
 }
 
-export default {
-  methods: {
-    myconfig,
-  },
-}
