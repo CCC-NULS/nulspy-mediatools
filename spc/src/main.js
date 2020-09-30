@@ -5,8 +5,6 @@ import router from './router'
 import App from './App.vue'
 import 'material-icons'
 
-Vue.config.productionTip = true
-
 new Vue({
   vuetify,
   store,
