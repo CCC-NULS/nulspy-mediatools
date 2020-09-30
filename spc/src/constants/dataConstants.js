@@ -10,8 +10,8 @@ var valueasset = 2500000000
 var gasprice = 90000
 var gaslimit = 10000000
 
-var url3 = 'https://westteam.nulstar.com:8003'
-var url4 = 'https://westteam.nulstar.com:8004/jsonrpc'
+var url3 = 'http://westteam.nulstar.com:8003'
+var url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
 
 const requestData = {
   chainid,

@@ -10,30 +10,30 @@
 
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
-import https from 'https'
-const fsx = require('fs-extra')
+//import https from 'https'
+#const fsx = require('fs-extra')
 
 
-var myhttpsAgent = new https.Agent({
-  cert: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
-  key: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
-})
+//var myhttpsAgent = new https.Agent({
+ // cert: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
+ // key: fsx.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
+//})
 
 const postOrGetHeader = {
   Host: 'westteam.nulstar.com',
-  Origin: 'https://westteam.nulstar.com',
+  Origin: 'http://westteam.nulstar.com',
   'Content-Type': 'application/json',
 }
 
 const postOptHeader = {
   Host: 'westteam.nulstar.com',
-  Origin: 'https://westteam.nulstar.com',
+  Origin: 'http://westteam.nulstar.com',
   'Access-Control-Request-Method': 'POST',
   'Access-Control-Request-Headers': 'Authorization, Content-Type',
 }
 
 const myconfig = axios.create({
-  myhttpsAgent,
+  //myhttpsAgent,
   defaults: {
     headers: {
       options: postOptHeader,
