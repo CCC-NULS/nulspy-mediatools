@@ -4,25 +4,24 @@
 /* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
-import rDataObj from '@/constants/dataConstants.js'
 
 function makeaxio() {
   const axioConfQbj = axios.create({
   defaults: {
     headers: {
-      post: { 
+      post: {
         Accept: 'application/json, text/plain, text/html',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Content-Type': 'application/json;charset=UTF-8',
       },
-      get: { 
-        Accept: 'application/json, text/plain, text/html', 
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
+      get: {
+        Accept: 'application/json, text/plain, text/html',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Content-Type': 'application/json;charset=UTF-8',
       },
       },
     },
-  });
+  })
   return axioConfQbj
 }
 
@@ -62,7 +61,7 @@ export async function axiosGetProducts(chainid, contaddy, url3) {
   const returntype = '() return String'
   const lastlist = []
   const getProdsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  axios.interceptors.request.use( localconf => {
+  axios.interceptors.request.use(localconf => {
     console.log(localconf)
     return localconf
   })
@@ -123,45 +122,47 @@ async function axiosGetContracts() {
 }
 
 export async function writeReview(writeproduct, wreview) {
-  const dObj = this.rDataObj
-  const chainid = dObj.data.tData.chainid
-  const sender = dObj.data.tData.sender
-  const passwd = dObj.data.tData.passwd
+  const chainid = 4810
+  const passwd = 'kathy123'
+  const contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
+  const sender = 'SPEXdKRT4pz7ZhasM9pTK4fvGrJf8eod5ZqtXa'
+  const owner = 'SPEXdKRT4hTzACffQBAP8jUwtJsaTg36b4uH7d' // new aug10
+  const valueasset = 2500000000
+  const gasprice = 90000
+  const gaslimit = 10000000
+  const url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
 
-  const valueasset = dObj.data.tData.valueasset // val * multiplier
-  const gaslimit = dObj.data.tData.gaslimit
-  const gasprice = dObj.data.tData.gasprice
-  const contract = dObj.data.tData.contaddy
   const args = [writeproduct, wreview]
   const contract_methodname = 'writeReview'
   const invokemethod = 'contractCall'
   const remark = 'call contract'
   const contractdesc = '(String productId, String reviewComments) return LReviewContract$Review;'
+  console.log('gaslimit: ' + gaslimit)
+  console.log('valueasset: ' + valueasset)
+  console.log('sender: ' + sender)
 
   const vparams = [chainid, sender, passwd, valueasset, gaslimit, gasprice,
     contract, contract_methodname, contractdesc, args, remark]
   console.log('axiosGetContracts vparams: ' + vparams)
-  axios.interceptors.request.use( localconf => {
-    console.log(localconf)
-    return localconf
+  console.log('axios.interceptors: ')
+  const axioObjWrite = makeaxio()
+
+  axios.interceptors.request.use(axioObjWrite => {
+    console.log(axioObjWrite)
+    return axioObjWrite
   })
 
   try {
-    var axresult
-    const myurl4 = dObj.data.tData.url4
-    axresult = await axios.post(myurl4, {
+    var axResWrite
+    axResWrite = await axioObjWrite.post(myurl4, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,
       params: vparams,
-      headers: {
-        Accept: 'application/json, text/plain, text/html',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
+      'Content-Type': 'application/json;charset=UTF-8',
     })
   } catch (e) { console.log(e) }
-  return axresult
+  return axResWrite
 }
 
 export const MyQueries = {
