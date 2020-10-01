@@ -13,7 +13,7 @@ var gaslimit = 10000000
 var url3 = 'http://westteam.nulstar.com:8003'
 var url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
 
-const requestData = {
+const tData = {
   chainid,
   passwd,
   contaddy,
@@ -30,6 +30,6 @@ const requestData = {
 export default {
   name: 'rDataObj',
   data: {
-    requestData,
+    tData,
   },
 }

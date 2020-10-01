@@ -454,7 +454,7 @@
   import rDataObj from '@/constants/dataConstants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
-  const reqData = rDataObj.data.requestData
+  const reqData = rDataObj.data.tData
 
   async function axiosGetRevs () {
     const localChainId = 4810

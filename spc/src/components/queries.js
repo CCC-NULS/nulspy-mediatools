@@ -5,12 +5,6 @@
 
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
-// const AccessContExpHeaders = 'Access-Control-Expose-Headers'
-// const acctlMeths = 'Access-Control-Allow-Methods'
-// const acctlOrig = 'Access-Control-Allow-Origin'
-// const appJson = 'application/json'
-// const contType = 'Content-Type'
-// const jsonV = '2.0'
 
 function makeaxio() {
   const axioConfQbj = axios.create({
@@ -54,8 +48,8 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
     console.log(e)
   }
   console.log('done in queries.axiosGetReviewsMain')
-  console.log('axresultg.data: ' + axresultg.data)
-  console.log('axresultg.data.result: ' + axresultg.data.result)
+  // console.log('axresultg.data: ' + axresultg.data)
+  // console.log('axresultg.data.result: ' + axresultg.data.result)
   console.log('axresultg.data.result.result: ' + axresultg.data.result.result)
   console.log('axresultg returning: ' + axresultg)
   return axresultg
@@ -129,30 +123,40 @@ async function axiosGetContracts() {
 }
 
 export async function writeReview(writeproduct, wreview) {
-  const contract = rDataObj.data.requestDatacontaddy
-  const sender = rDataObj.data.requestDatasender
-  const valueasset = rDataObj.data.requestDatavalueasset // val * multiplier
-  const gasprice = rDataObj.data.requestDatagasprice
-  const gaslimit = rDataObj.data.requestDatagaslimit
+  const dObj = this.rDataObj
+  const chainid = dObj.data.tData.chainid
+  const sender = dObj.data.tData.sender
+  const passwd = dObj.data.tData.passwd
+
+  const valueasset = dObj.data.tData.valueasset // val * multiplier
+  const gaslimit = dObj.data.tData.gaslimit
+  const gasprice = dObj.data.tData.gasprice
+  const contract = dObj.data.tData.contaddy
   const args = [writeproduct, wreview]
   const contract_methodname = 'writeReview'
   const invokemethod = 'contractCall'
   const remark = 'call contract'
   const contractdesc = '(String productId, String reviewComments) return LReviewContract$Review;'
 
-  const vparams = [rDataObj.data.requestDatachainid, sender, rDataObj.data.requestDatapasswd, valueasset, gaslimit, gasprice,
+  const vparams = [chainid, sender, passwd, valueasset, gaslimit, gasprice,
     contract, contract_methodname, contractdesc, args, remark]
   console.log('axiosGetContracts vparams: ' + vparams)
+  axios.interceptors.request.use( localconf => {
+    console.log(localconf)
+    return localconf
+  })
 
   try {
     var axresult
-    const myurl4 = rDataObj.data.requestData.url4
+    const myurl4 = dObj.data.tData.url4
     axresult = await axios.post(myurl4, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,
       params: vparams,
       headers: {
+        Accept: 'application/json, text/plain, text/html',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
         'Content-Type': 'application/json;charset=UTF-8',
       },
     })
