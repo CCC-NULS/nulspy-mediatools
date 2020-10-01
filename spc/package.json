@@ -22,7 +22,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "fs-extra": "^9.0.1",
+    "fs-jetpack": "^3.1.0",
     "https": "^1.0.0",
     "material-icons": "^0.3.1",
     "regenerator-runtime": "^0.13.5",

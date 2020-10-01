@@ -6,15 +6,19 @@
 import axios from 'axios'
 import { cobj } from '@/constants/dataConstants.js'
 import https from 'https'
+const jetpack = require('fs-jetpack');
+
 const chainid = cobj.chainid
 const contaddy = cobj.contaddy
 const myurl3 = cobj.url3
 const url4 = cobj.url4
+const ca2 = jetpack.read('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem')
+const key2 = jetpack.read('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem')
 
-const hsAgent = new https.Agent({ 
-  ca: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
-  key: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
-});
+const hsAgent = new https.Agent({
+  ca: ca2,
+  key: key2,
+})
 
 function makeaxio() {
   const axioConfObj = axios.create({
@@ -69,10 +73,6 @@ export async function axiosGetProducts(chainid, contaddy, url3) {
   const returntype = '() return String'
   const lastlist = []
   const getProdsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  axios.interceptors.request.use(localconf => {
-    console.log(localconf)
-    return localconf
-  })
   const axioGetProds = makeaxio()
 
   try {
@@ -142,13 +142,7 @@ export async function writeReview(writeproduct, wreview) {
   const vparams = [chainid, sender, passwd, valueasset, gaslimit, gasprice,
     contaddy, contract_methodname, contractdesc, args, remark]
   console.log('axiosGetContracts vparams: ' + vparams)
-  console.log('axios.interceptors: ')
   const axioObjWrite = makeaxio()
-
-  axios.interceptors.request.use(axioObjWrite => {
-    console.log(axioObjWrite)
-    return axioObjWrite
-  })
 
   try {
     var axResWrite
