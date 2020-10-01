@@ -13,7 +13,7 @@ const gaslimit = 10000000
 const url3 = 'http://westteam.nulstar.com:8003'
 const url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
 
-const dataConstants = {
+const cobj = {
   chainid,
   passwd,
   contaddy,
@@ -27,6 +27,4 @@ const dataConstants = {
   url4,
 }
 
-export default {
-    dataConstants,
-}
+export { cobj }

@@ -4,6 +4,10 @@
 /* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
+import { cobj }  from '@/constants/dataConstants.js'
+const tchainid = cobj.chainid
+const contractaddy = cobj.contaddy
+const myurl3 = cobj.url3
 
 function makeaxio() {
   const axioConfQbj = axios.create({
@@ -122,15 +126,15 @@ async function axiosGetContracts() {
 }
 
 export async function writeReview(writeproduct, wreview) {
-  const chainid = 4810
-  const passwd = 'kathy123'
-  const contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
-  const sender = 'SPEXdKRT4pz7ZhasM9pTK4fvGrJf8eod5ZqtXa'
-  const owner = 'SPEXdKRT4hTzACffQBAP8jUwtJsaTg36b4uH7d' // new aug10
-  const valueasset = 2500000000
-  const gasprice = 90000
-  const gaslimit = 10000000
-  const url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
+  const chainid = cobj.chainid
+  const passwd =  cobj.passwd
+  const contaddy = cobj.contaddy
+  const sender = cobj.sender
+  const owner = cobj.owner // new aug10
+  const valueasset = cobj.valueasset
+  const gasprice = cobj.gasprice
+  const gaslimit = cobj.gaslimit
+  const url4 = cobj.url4
 
   const args = [writeproduct, wreview]
   const contract_methodname = 'writeReview'
@@ -142,7 +146,7 @@ export async function writeReview(writeproduct, wreview) {
   console.log('sender: ' + sender)
 
   const vparams = [chainid, sender, passwd, valueasset, gaslimit, gasprice,
-    contract, contract_methodname, contractdesc, args, remark]
+    contaddy, contract_methodname, contractdesc, args, remark]
   console.log('axiosGetContracts vparams: ' + vparams)
   console.log('axios.interceptors: ')
   const axioObjWrite = makeaxio()
@@ -154,7 +158,7 @@ export async function writeReview(writeproduct, wreview) {
 
   try {
     var axResWrite
-    axResWrite = await axioObjWrite.post(myurl4, {
+    axResWrite = await axioObjWrite.post(url4, {
       jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,

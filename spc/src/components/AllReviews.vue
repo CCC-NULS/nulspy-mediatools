@@ -451,21 +451,20 @@
 
 <script>
   /* eslint-disable vue/max-attributes-per-line */
-  import rDataObj from '@/constants/dataConstants.js'
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
   const dJSON = require('dirty-json')
-  const reqData = rDataObj.data.tData
+  import { cobj }  from '@/constants/dataConstants.js'
+  const tchainid = cobj.chainid
+  const contractaddy = cobj.contaddy
+  const myurl3 = cobj.url3
 
   async function axiosGetRevs () {
-    const localChainId = 4810
-    const getContractAddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
     const productChoice = this.prodchoice
-    const westUrl3 = 'http://westteam.nulstar.com:8003'
     console.log('inside AllReviews.vue function axiosGetRevs ')
-    console.log('using westUrl3: ' + westUrl3 + ' localChainId: ' + localChainId)
-    console.log('getting productChoice: ' + productChoice + ' contract: ' + getContractAddy)
+    console.log('using westUrl3: ' + myurl3 + ' tchainid: ' + tchainid)
+    console.log('getting productChoice: ' + productChoice + ' contract: ' + contractaddy)
 
-    const theGetResponse = await axiosGetReviewsMain(localChainId, getContractAddy, productChoice, westUrl3)
+    const theGetResponse = await axiosGetReviewsMain(tchainid, contractaddy, productChoice, myurl3)
     console.log('theGetResponse: ' + theGetResponse)
 
     const myresult = theGetResponse.data.result.result // step 1 stringify
@@ -481,9 +480,8 @@
   }
 
   async function axiosGetProds () {
-    const c = reqData
-    console.log('thedata: ' + c.chainid + ' ' + c.contaddy + ' ' + c.url3)
-    const axr = await this.axiosGetProducts(c.chainid, c.contaddy, c.url3)
+    console.log('thedata: ' + tchainid + ' ' + contractaddy + ' ' + myurl3)
+    const axr = await this.axiosGetProducts(tchainid, contractaddy, myurl3)
     const axrsorted = axr.slice().sort()
     console.log('sorted: -- : ' + axrsorted)
     this.productlist = []
@@ -552,8 +550,8 @@
       productlist: [],
       prodchoice: '',
       reviewlist: '',
-      chainid: reqData.chainid,
-      contracts: ['SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'],
+      chainid: tchainid,
+      contracts: [contractaddy],
     }),
 
     computed: {
