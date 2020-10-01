@@ -20,14 +20,14 @@ const theme = {
   peachy: colors.deepOrange.lighten4,
   pinkish: colors.deepPurple.lighten4,
   tealish: colors.teal.lighten4,
-  greyish: colors.blueGrey.lighten4
-} 
+  greyish: colors.blueGrey.lighten4,
+}
 
 export default new Vuetify({
   theme: {
     themes: {
       dark: theme,
-      light: theme
-    }
-  }
+      light: theme,
+    },
+  },
 })

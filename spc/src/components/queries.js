@@ -14,7 +14,7 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const reqtype = 'getReviews'
   const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlist]
   console.log('inside axiosGetReviewsMain')
-  console.log('vals:  chainid: ' + chainid + contaddy + "  reqtype: " + reqtype + " productId: " + productId)
+  console.log('vals:  chainid: ' + chainid + contaddy + '  reqtype: ' + reqtype + ' productId: ' + productId)
   try {
     var axresultg
     axresultg = await axios.post(url3, {
@@ -133,4 +133,3 @@ export async function writeReview(writeproduct, wreview) {
 export const MyQueries = {
   axiosGetContracts,
 }
-

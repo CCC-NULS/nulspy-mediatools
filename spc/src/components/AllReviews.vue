@@ -428,9 +428,9 @@
           </v-card>
           <!-- Math.random below is for duplicate keys problem -->
           <v-simple-table
-            v-for="review in reviewlist"
+            v-for="reviewitm in reviewlist"
             id="reviewstable"
-            :key="review.id + Math.random().toString()"
+            :key="reviewitm.id + Math.random().toString()"
             reviewssheet
             dense
             height="auto"
@@ -441,7 +441,7 @@
             max-height="1550px"
             class="d-flex flex-column flex-grow-1 flex-shrink-1 pa-3 ml-1 mr-4 mt-1 mb-1"
           >
-            <span :style="`font-size:14px;overflow-x:scroll;`"> {{ review.comments }} </span>
+            <span :style="`font-size:14px;overflow-x:scroll;`"> {{ reviewitm.comments }} </span>
           </v-simple-table>
         </v-card>   <!-- end rightbtmsheet -->
       </v-card>  <!-- end   botdivgraphic -->
@@ -457,24 +457,24 @@
   const reqData = rDataObj.data.requestData
 
   async function axiosGetRevs () {
-    let localChainId = 4810
-    let getContractAddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
-    let productChoice = this.prodchoice
-    let westUrl3 = 'http://westteam.nulstar.com:8003'
-    console.log("inside AllReviews.vue function axiosGetRevs ") 
-    console.log("using westUrl3: " + westUrl3 + " localChainId: " + localChainId) 
-    console.log("getting productChoice: " + productChoice + " contract: " + getContractAddy) 
+    const localChainId = 4810
+    const getContractAddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
+    const productChoice = this.prodchoice
+    const westUrl3 = 'http://westteam.nulstar.com:8003'
+    console.log('inside AllReviews.vue function axiosGetRevs ')
+    console.log('using westUrl3: ' + westUrl3 + ' localChainId: ' + localChainId)
+    console.log('getting productChoice: ' + productChoice + ' contract: ' + getContractAddy)
 
-    let theGetResponse = await axiosGetReviewsMain(localChainId, getContractAddy, productChoice, westUrl3)
-    console.log("theGetResponse: " + theGetResponse) 
+    const theGetResponse = await axiosGetReviewsMain(localChainId, getContractAddy, productChoice, westUrl3)
+    console.log('theGetResponse: ' + theGetResponse)
 
     const myresult = theGetResponse.data.result.result // step 1 stringify
-    console.log("theGetResponse.data: " + theGetResponse.data) 
-    console.log("theGetResponse.data.result: " + theGetResponse.data.result) 
-    console.log("theGetResponse.data.result.result: " + theGetResponse.data.result.result) 
+    console.log('theGetResponse.data: ' + theGetResponse.data)
+    console.log('theGetResponse.data.result: ' + theGetResponse.data.result)
+    console.log('theGetResponse.data.result.result: ' + theGetResponse.data.result.result)
 
     const parsedResponse = dJSON.parse(myresult)
-    console.log("parsedResponse: " + parsedResponse) 
+    console.log('parsedResponse: ' + parsedResponse)
 
     this.reviewlist = parsedResponse
     this.cardkey += 1
