@@ -12,7 +12,7 @@
         />
       </v-container>
     </v-main>
-    <footer app />
+    <footer-bar app />
   </v-app>
 </template>
 
@@ -20,14 +20,14 @@
   // see https://vuetifyjs.com/en/components/application/ for detailed instructions for this component
   import AllReviews from './components/AllReviews'
   import AppyBar from './components/AppyBar'
-  import Footer from './components/Footer'
+  import FooterBar from './components/FooterBar'
 
   export default {
     name: 'App',
     components: {
       'appy-bar': AppyBar,
       'all-reviews': AllReviews,
-      footer: Footer,
+      'footer-bar': FooterBar,
     },
   }
 </script>
