@@ -5,45 +5,52 @@
 
 import axios from 'axios'
 import { cobj } from '@/constants/dataConstants.js'
-const tchainid = cobj.chainid
-const contractaddy = cobj.contaddy
+import https from 'https'
+const chainid = cobj.chainid
+const contaddy = cobj.contaddy
 const myurl3 = cobj.url3
+const url4 = cobj.url4
+
+const hsAgent = new https.Agent({ 
+  ca: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/fullchain1.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/archive/westteam.nulstar.com/privkey1.pem'),
+});
 
 function makeaxio() {
-  const axioConfQbj = axios.create({
-  defaults: {
-    headers: {
-      post: {
-        Accept: 'application/json, text/plain, text/html',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-      get: {
-        Accept: 'application/json, text/plain, text/html',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
+  const axioConfObj = axios.create({
+    agent: hsAgent,
+    jsonrpc: '2.0',
+    defaults: {
+      headers: {
+        post: {
+          Accept: 'application/json, text/plain, text/html',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+        get: {
+          Accept: 'application/json, text/plain, text/html',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
       },
     },
   })
-  return axioConfQbj
+  return axioConfObj
 }
 
 export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
-  const invokemethod = 'invokeView'
   const returntype = '(String productId) return Ljava/util/List;'
-  const lastlist = [productId]
+  const lastlistw = [productId]
   const reqtype = 'getReviews'
-  const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlist]
+  const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlistw]
   console.log('inside queries.axiosGetReviewsMain')
-  console.log('chainid: ' + chainid + ' chainid: ' + contaddy + ' reqtype: ' + reqtype + ' productId: ' + productId)
+  console.log('c: ' + chainid + ' contaddy: ' + contaddy + ' reqtype: ' + reqtype + ' prodId: ' + productId)
   const axioObj = makeaxio()
   try {
     var axresultg
     axresultg = await axioObj.post(url3, {
       method: 'invokeView',
       id: '900092',
-      jsonrpc: '2.0',
       'Content-Type': 'application/json;charset=UTF-8',
       params: getReviewsParams,
     })
@@ -51,8 +58,6 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
     console.log(e)
   }
   console.log('done in queries.axiosGetReviewsMain')
-  // console.log('axresultg.data: ' + axresultg.data)
-  // console.log('axresultg.data.result: ' + axresultg.data.result)
   console.log('axresultg.data.result.result: ' + axresultg.data.result.result)
   console.log('axresultg returning: ' + axresultg)
   return axresultg
@@ -60,7 +65,6 @@ export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
 
 export async function axiosGetProducts(chainid, contaddy, url3) {
   console.log('here now in queries axiosGetProducts')
-  const invokemethod = 'invokeView'
   const reqtype = 'getAllProductIds'
   const returntype = '() return String'
   const lastlist = []
@@ -69,18 +73,15 @@ export async function axiosGetProducts(chainid, contaddy, url3) {
     console.log(localconf)
     return localconf
   })
+  const axioGetProds = makeaxio()
 
   try {
     var axresult
     console.log('axiosGetContracts getProdsParams: ' + getProdsParams)
-    axresult = await axios.post(url3, {
-      jsonrpc: '2.0',
-      method: invokemethod,
+    axresult = await axioGetProds.post(url3, {
+      method: 'invokeView',
       id: 99099,
       params: getProdsParams,
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
   } catch (e) {
     console.log(e)
@@ -96,24 +97,21 @@ async function axiosGetContracts() {
   var productId = this.prodchoice
   const invokemethod = 'invokeView'
   const returntype = '(String productId) return Ljava/util/List;'
-  const lastlist = [productId]
+  const lastlistp = [productId]
   const queryid = 900097
-  const myurl3 = 'http://westteam.nulstar.com:8003'
 
   const reqtype = 'getAccountContractList'
-  const vparams = [this.chainid, this.contractaddy, reqtype, returntype, lastlist]
+  const vparams = [this.chainid, this.contractaddy, reqtype, returntype, lastlistp]
   console.log('just made new axios object in axiosGetContracts')
+  const axioGetContr = makeaxio()
+
   try {
     var axresult
     console.log('axiosGetContracts vparams: ' + vparams)
-    axresult = await axios.post(myurl3, {
-      jsonrpc: '2.0',
+    axresult = await axioGetContr.post(myurl3, {
       method: invokemethod,
       id: queryid,
       params: vparams,
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
     })
   } catch (e) {
     console.log(e)
@@ -126,15 +124,11 @@ async function axiosGetContracts() {
 }
 
 export async function writeReview(writeproduct, wreview) {
-  const chainid = cobj.chainid
   const passwd = cobj.passwd
-  const contaddy = cobj.contaddy
   const sender = cobj.sender
-  const owner = cobj.owner // new aug10
   const valueasset = cobj.valueasset
   const gasprice = cobj.gasprice
   const gaslimit = cobj.gaslimit
-  const url4 = cobj.url4
 
   const args = [writeproduct, wreview]
   const contract_methodname = 'writeReview'
@@ -159,11 +153,9 @@ export async function writeReview(writeproduct, wreview) {
   try {
     var axResWrite
     axResWrite = await axioObjWrite.post(url4, {
-      jsonrpc: '2.0',
       method: invokemethod,
       id: 900099,
       params: vparams,
-      'Content-Type': 'application/json;charset=UTF-8',
     })
   } catch (e) { console.log(e) }
   return axResWrite

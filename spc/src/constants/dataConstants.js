@@ -10,8 +10,8 @@ const valueasset = 2500000000
 const gasprice = 90000
 const gaslimit = 10000000
 
-const url3 = 'http://westteam.nulstar.com:8003'
-const url4 = 'http://westteam.nulstar.com:8004/jsonrpc'
+const url3 = 'https://localhost:8003'
+const url4 = 'https://localhost:8004/jsonrpc'
 
 const cobj = {
   chainid,
