@@ -4,7 +4,7 @@
 /* eslint space-before-function-paren: 0 */
 
 import axios from 'axios'
-import { cobj }  from '@/constants/dataConstants.js'
+import { cobj } from '@/constants/dataConstants.js'
 const tchainid = cobj.chainid
 const contractaddy = cobj.contaddy
 const myurl3 = cobj.url3
@@ -127,7 +127,7 @@ async function axiosGetContracts() {
 
 export async function writeReview(writeproduct, wreview) {
   const chainid = cobj.chainid
-  const passwd =  cobj.passwd
+  const passwd = cobj.passwd
   const contaddy = cobj.contaddy
   const sender = cobj.sender
   const owner = cobj.owner // new aug10

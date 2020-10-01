@@ -4,9 +4,11 @@ const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 // publicPath really needs to be /spc/ or something
 
 module.exports = {
-  // publicPath: '/spc/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/spc/'
+    : '/'
   devServer: {
-    port: 5007,
+    port: 5004,
     host: '0.0.0.0',
     disableHostCheck: true,
   },

@@ -452,8 +452,8 @@
 <script>
   /* eslint-disable vue/max-attributes-per-line */
   import { axiosGetProducts, writeReview, axiosGetReviewsMain } from './queries.js'
+  import { cobj } from '@/constants/dataConstants.js'
   const dJSON = require('dirty-json')
-  import { cobj }  from '@/constants/dataConstants.js'
   const tchainid = cobj.chainid
   const contractaddy = cobj.contaddy
   const myurl3 = cobj.url3
