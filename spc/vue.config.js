@@ -7,7 +7,7 @@ module.exports = {
   // publicPath: '/spc/',
   devServer: {
     port: 5007,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     disableHostCheck: true,
   },
   transpileDependencies: [

@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"github.gitAuthentication": false,
+		"grunt.autoDetect": "off",
+		"gulp.autoDetect": "off",
+		"jake.autoDetect": "off",
+		"typescript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
+		"typescript.format.insertSpaceAfterSemicolonInForStatements": false,
+		"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+		"typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+		"typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+		"typescript.format.insertSpaceAfterCommaDelimiter": false,
+		"typescript.format.enable": false,
+		"javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+		"javascript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
+		"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+		"javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+		"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+		"javascript.format.insertSpaceAfterCommaDelimiter": false,
+		"javascript.format.enable": false,
+		"json.format.enable": false,
+		"html.format.enable": false,
+		"editor.formatOnSaveMode": "modifications",
+		"remote.WSL.debug": true
+	}
+}

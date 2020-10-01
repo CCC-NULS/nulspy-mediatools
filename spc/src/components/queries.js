@@ -5,28 +5,58 @@
 
 import axios from 'axios'
 import rDataObj from '@/constants/dataConstants.js'
+// const AccessContExpHeaders = 'Access-Control-Expose-Headers'
+// const acctlMeths = 'Access-Control-Allow-Methods'
+// const acctlOrig = 'Access-Control-Allow-Origin'
+// const appJson = 'application/json'
+// const contType = 'Content-Type'
+// const jsonV = '2.0'
+
+function makeaxio() {
+  const axioConfQbj = axios.create({
+  defaults: {
+    headers: {
+      post: { 
+        Accept: 'application/json, text/plain, text/html',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      get: { 
+        Accept: 'application/json, text/plain, text/html', 
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      },
+    },
+  });
+  return axioConfQbj
+}
 
 export async function axiosGetReviewsMain(chainid, contaddy, productId, url3) {
   const invokemethod = 'invokeView'
   const returntype = '(String productId) return Ljava/util/List;'
   const lastlist = [productId]
-  const queryid = 900092
   const reqtype = 'getReviews'
   const getReviewsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  console.log('inside axiosGetReviewsMain')
-  console.log('vals:  chainid: ' + chainid + contaddy + '  reqtype: ' + reqtype + ' productId: ' + productId)
+  console.log('inside queries.axiosGetReviewsMain')
+  console.log('chainid: ' + chainid + ' chainid: ' + contaddy + ' reqtype: ' + reqtype + ' productId: ' + productId)
+  const axioObj = makeaxio()
   try {
     var axresultg
-    axresultg = await axios.post(url3, {
-      method: invokemethod,
-      id: queryid,
+    axresultg = await axioObj.post(url3, {
+      method: 'invokeView',
+      id: '900092',
+      jsonrpc: '2.0',
+      'Content-Type': 'application/json;charset=UTF-8',
       params: getReviewsParams,
     })
   } catch (e) {
     console.log(e)
   }
-  console.log('done in axiosGetReviewsMain')
-
+  console.log('done in queries.axiosGetReviewsMain')
+  console.log('axresultg.data: ' + axresultg.data)
+  console.log('axresultg.data.result: ' + axresultg.data.result)
+  console.log('axresultg.data.result.result: ' + axresultg.data.result.result)
   console.log('axresultg returning: ' + axresultg)
   return axresultg
 }
@@ -38,10 +68,10 @@ export async function axiosGetProducts(chainid, contaddy, url3) {
   const returntype = '() return String'
   const lastlist = []
   const getProdsParams = [chainid, contaddy, reqtype, returntype, lastlist]
-  // axios.interceptors.request.use(getProdConf => {
-  //   console.log(getProdConf)
-  //   return getProdConf
-  // })
+  axios.interceptors.request.use( localconf => {
+    console.log(localconf)
+    return localconf
+  })
 
   try {
     var axresult
