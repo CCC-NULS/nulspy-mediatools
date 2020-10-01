@@ -457,16 +457,26 @@
   const reqData = rDataObj.data.requestData
 
   async function axiosGetRevs () {
-    var contaddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
-    const cid = 4810
-    const u3 = 'http://westteam.nulstar.com:8003'
-    const axiosrespget = await axiosGetReviewsMain(cid, contaddy, this.prodchoice, u3)
-    console.log("axiosrespget: " + axiosrespget) 
-    console.log("vals: " + contaddy + " " + this.prodchoice) 
+    let localChainId = 4810
+    let getContractAddy = 'SPEXdKRT4zmkrCMcwQKfWEQfmCCKSboHp4TCdC'
+    let productChoice = this.prodchoice
+    let westUrl3 = 'http://westteam.nulstar.com:8003'
+    console.log("inside AllReviews.vue function axiosGetRevs ") 
+    console.log("using westUrl3: " + westUrl3 + " localChainId: " + localChainId) 
+    console.log("getting productChoice: " + productChoice + " contract: " + getContractAddy) 
 
-    const myresult = axiosrespget.data.result.result // step 1 stringify
-    const stepone = dJSON.parse(myresult)
-    this.reviewlist = stepone
+    let theGetResponse = await axiosGetReviewsMain(localChainId, getContractAddy, productChoice, westUrl3)
+    console.log("theGetResponse: " + theGetResponse) 
+
+    const myresult = theGetResponse.data.result.result // step 1 stringify
+    console.log("theGetResponse.data: " + theGetResponse.data) 
+    console.log("theGetResponse.data.result: " + theGetResponse.data.result) 
+    console.log("theGetResponse.data.result.result: " + theGetResponse.data.result.result) 
+
+    const parsedResponse = dJSON.parse(myresult)
+    console.log("parsedResponse: " + parsedResponse) 
+
+    this.reviewlist = parsedResponse
     this.cardkey += 1
   }
 
